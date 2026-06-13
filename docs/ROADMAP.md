@@ -25,41 +25,43 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Command surface and system node placeholders.
 - No real app governance or system privileges.
 
-## Phase 4 — ROM-first architecture pivot — this PR
+## Phase 4 — ROM-first architecture pivot — done
 
 - Reframe AelitaOS as the actual product.
 - Reframe Aelita-Fon as Shell / launcher component.
 - Add ROM, device, security, app-control and build-pipeline planning docs.
 - Add `rom/` placeholders without flashable or executable content.
 
-## Phase 5 — Local Core MVP inside Shell
+## Phase 5 — System Agent normal-app prototype — implemented
+
+- Non-privileged System Agent abstraction.
+- Local state/status reporting inside normal Android limits.
+- PolicyEngine, CapabilityRegistry, DeviceStateReader and in-memory Action Log.
+- Shell UI connected to deterministic local agent commands.
+- No hidden services, privileged behavior, cloud or external AI API.
+
+## Phase 6 — Local Core MVP inside Shell
 
 - Local command model inside the Shell.
 - Rule-based local behavior only.
 - No cloud or external AI API.
 
-## Phase 6 — App list and launch MVP
+## Phase 7 — App list and launch MVP
 
 - Local app list where allowed by Android APIs.
 - Safe app launch through intents.
 - Visible action logging.
 
-## Phase 7 — Permission Center prototype
+## Phase 8 — Permission Center prototype
 
 - Show capabilities, permission state and risk explanations.
 - No privileged permissions without explicit task.
 
-## Phase 8 — Action Log and local memory hardening
+## Phase 9 — Action Log and local memory hardening
 
 - Durable local action log.
 - Local memory model.
 - User-visible edit/delete/export direction.
-
-## Phase 9 — Aelita System Agent normal-app prototype
-
-- Non-privileged agent abstraction.
-- Local state coordination inside normal Android limits.
-- No hidden services.
 
 ## Phase 10 — Privileged system app design
 

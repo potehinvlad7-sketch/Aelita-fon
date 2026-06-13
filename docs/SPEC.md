@@ -279,3 +279,17 @@ The end goal is a phone where Aelita is the primary interface and local intellig
 This project is not a Google Assistant clone. It is not a normal launcher clone. It is a custom ROM project with an AI-native system shell.
 
 The current app should therefore be treated as the Aelita Shell / system launcher frontend, not as the whole product. True application governance, permission mediation, SystemUI behavior and framework-level control require future system app, privileged app or ROM/framework integration.
+
+## 12. System Agent normal-app prototype
+
+Текущий System Agent — безопасный normal-app прототип будущего системного слоя AelitaOS. Он моделирует будущие обязанности системного агента, но не использует системные привилегии и не выполняет реальное управление устройством.
+
+Прототип включает:
+
+- `AelitaSystemAgent` как интерфейс между Shell UI и локальной системной логикой;
+- `PolicyEngine`, который оценивает действие до ответа;
+- `CapabilityRegistry`, который честно показывает уровни доступа от Shell до будущей ROM-интеграции;
+- `DeviceStateReader`, ограниченный безопасной информацией normal-app уровня;
+- in-memory `ActionLogStore` без Room, SharedPreferences или фоновой синхронизации.
+
+Все текущие действия являются локальными deterministic no-op операциями или статусными отчётами. Прототип не запрашивает опасные Android permissions, не читает список установленных приложений, не запускает приложения, не использует Accessibility, Notification Listener, root, сеть, cloud backend или внешний AI API.
