@@ -4,5 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 val DeepBlack = Color(0xFF050008)
 val PanelBlack = Color(0xFF110018)
+val CardViolet = Color(0xFF1B0728)
 val AelitaViolet = Color(0xFF9D66FF)
 val SoftViolet = Color(0xFFE8D9FF)
+val MutedViolet = Color(0xFFBFA9D9)
