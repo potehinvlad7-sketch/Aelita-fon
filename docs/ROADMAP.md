@@ -22,11 +22,15 @@
 
 ## Phase 2. Launcher mode
 
+Статус: **implemented as a minimal prototype**.
+
 Цель: подготовить Aelita-Fon как launcher shell.
 
 - Добавить launcher intent filters.
 - Проверить поведение Home.
 - Описать ограничения Android launcher mode.
+- Launcher mode does not give root or system access.
+- Launcher mode only replaces the Android home screen behavior.
 
 ## Phase 3. Shell UI
 
