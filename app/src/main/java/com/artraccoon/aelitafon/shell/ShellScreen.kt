@@ -22,11 +22,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.artraccoon.aelitafon.core.DefaultAelitaLocalCore
 import com.artraccoon.aelitafon.device.CapabilityRegistry
 import com.artraccoon.aelitafon.device.DeviceStateSnapshot
 import com.artraccoon.aelitafon.device.DeviceStateReader
 import com.artraccoon.aelitafon.logs.InMemoryActionLogStore
+import com.artraccoon.aelitafon.evolution.LocalSuggestionEngine
+import com.artraccoon.aelitafon.memory.MemoryRepository
+import com.artraccoon.aelitafon.memory.MemoryEntry
 import com.artraccoon.aelitafon.policy.DefaultPolicyEngine
+import com.artraccoon.aelitafon.projects.ProjectEntry
+import com.artraccoon.aelitafon.projects.ProjectRepository
 import com.artraccoon.aelitafon.shell.components.AelitaHeader
 import com.artraccoon.aelitafon.shell.components.CommandPanel
 import com.artraccoon.aelitafon.shell.components.SystemNodeGrid
@@ -98,7 +104,7 @@ fun ShellScreen(
                     fontWeight = FontWeight.SemiBold,
                 )
                 Text(
-                    text = "Нефункциональные точки будущей оболочки. Реальные модули будут подключены позже.",
+                    text = "Локальные разделы Shell: память, проекты, журнал, предложения и честные системные ограничения.",
                     color = MutedViolet,
                     fontSize = 13.sp,
                     lineHeight = 18.sp,
@@ -128,7 +134,7 @@ private fun ShellScreenPreview() {
                 deviceStateReader = previewDeviceStateReader,
                 capabilityRegistry = CapabilityRegistry(),
                 policyEngine = DefaultPolicyEngine(),
-                actionLogStore = InMemoryActionLogStore(),
+                localCore = previewLocalCore,
             ),
         )
     }
@@ -148,3 +154,25 @@ private val previewDeviceStateReader = object : DeviceStateReader {
         romBridge = false,
     )
 }
+
+
+private val previewMemoryRepository = object : MemoryRepository {
+    override fun addMemory(text: String): MemoryEntry = MemoryEntry("preview-memory", text, 0L)
+    override fun getMemories(): List<MemoryEntry> = emptyList()
+    override fun deleteMemory(id: String): Boolean = false
+    override fun clearMemories(): Boolean = true
+}
+
+private val previewProjectRepository = object : ProjectRepository {
+    override fun addProject(title: String): ProjectEntry = ProjectEntry("preview-project", title, null, 0L, 0L, "active")
+    override fun getProjects(): List<ProjectEntry> = emptyList()
+    override fun deleteProject(id: String): Boolean = false
+    override fun clearProjects(): Boolean = true
+}
+
+private val previewLocalCore = DefaultAelitaLocalCore(
+    memoryRepository = previewMemoryRepository,
+    projectRepository = previewProjectRepository,
+    actionLogStore = InMemoryActionLogStore(),
+    suggestionEngine = LocalSuggestionEngine(),
+)

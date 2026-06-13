@@ -32,7 +32,7 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Add ROM, device, security, app-control and build-pipeline planning docs.
 - Add `rom/` placeholders without flashable or executable content.
 
-## Phase 5 — System Agent normal-app prototype — implemented
+## Phase 5 — System Agent normal-app prototype — done
 
 - Non-privileged System Agent abstraction.
 - Local state/status reporting inside normal Android limits.
@@ -40,11 +40,14 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Shell UI connected to deterministic local agent commands.
 - No hidden services, privileged behavior, cloud or external AI API.
 
-## Phase 6 — Local Core MVP inside Shell
+## Phase 6 — Local Core MVP inside Shell — this PR
 
-- Local command model inside the Shell.
+- Persistent local memory and projects.
+- Persistent action log.
+- Deterministic Russian-first parser.
+- Local suggestions in Shell.
 - Rule-based local behavior only.
-- No cloud or external AI API.
+- No cloud, network or external AI API.
 
 ## Phase 7 — App list and launch MVP
 
@@ -63,37 +66,43 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Local memory model.
 - User-visible edit/delete/export direction.
 
-## Phase 10 — Privileged system app design
+## Phase 10 — System Agent hardening
+
+- Harden command routing and policy boundaries.
+- Improve confirmations, export paths and auditability.
+- Keep normal-app limits honest until a separate privileged design phase.
+
+## Phase 11 — Privileged system app design
 
 - Design system app and priv-app boundaries.
 - Document permission requirements and risks.
 - No implementation until reviewed.
 
-## Phase 11 — ROM tree selection and lisa device research
+## Phase 12 — ROM tree selection and lisa device research
 
 - Choose base ROM direction.
 - Verify `lisa` device tree, vendor blobs, kernel and firmware requirements.
 - Document anti-rollback and restore path.
 
-## Phase 12 — AelitaOS build environment
+## Phase 13 — AelitaOS build environment
 
 - Host Linux build environment plan.
 - Source tree and manifest structure.
 - Signing and artifact policy.
 
-## Phase 13 — Include Aelita Shell as system app / priv-app
+## Phase 14 — Include Aelita Shell as system app / priv-app
 
 - Integrate Shell into ROM build as system component.
 - Keep privileges minimal and documented.
 
-## Phase 14 — Google replacement defaults
+## Phase 15 — Google replacement defaults
 
 - Launcher default.
 - Assistant role direction.
 - Local search entry and app suggestions.
 - No mandatory GMS dependency.
 
-## Phase 15 — Notification and usage observation layer
+## Phase 16 — Notification and usage observation layer
 
 - User-visible notification and usage observation.
 - Explicit permissions.
@@ -125,3 +134,14 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 
 - Stability, battery, privacy and rollback hardening.
 - Long-term maintenance process.
+
+## Phase status update
+
+- Phase 5 — System Agent normal-app prototype — done.
+- Phase 6 — Local Core MVP inside Shell — this PR.
+- Phase 7 — App list and launch MVP.
+- Phase 8 — Permission Center prototype.
+- Phase 9 — Action Log and local memory hardening.
+- Phase 10 — System Agent hardening.
+- Phase 11 — Privileged system app design.
+- Phase 12 — ROM tree selection and lisa device research.

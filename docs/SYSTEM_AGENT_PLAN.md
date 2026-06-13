@@ -60,10 +60,16 @@ Current boundaries:
 - no ROM bridge;
 - no cloud backend;
 - no external AI API;
-- in-memory logs only.
+- persistent local action log for the Local Core MVP.
 
 The prototype exists to prepare package structure and policy boundaries for later AelitaOS ROM/system integration without pretending that those privileges are active today.
 
 ## Current scope
 
 No service, permission, privileged code or background behavior is added in this PR.
+
+## Current status — Local Core MVP
+
+The System Agent remains a normal Android app orchestrator. It now delegates local memory, project, journal, suggestion, and help commands to the Local Core while keeping status, capabilities, ROM information, app-control placeholders, and policy explanations honest about normal-app limits.
+
+No privileged control is implemented. There is no app launching, Accessibility service, Notification Listener, root bridge, Shizuku bridge, background service, cloud backend, external AI API, or ROM integration.
