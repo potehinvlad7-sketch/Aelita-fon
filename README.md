@@ -6,7 +6,7 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 5 — ROM-first architecture pivot**.
+> ⚠️ Current status: **Phase 4 — ROM-first architecture pivot**.
 >
 > This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases.
 
