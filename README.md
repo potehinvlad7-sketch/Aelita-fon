@@ -184,3 +184,28 @@ Implemented in the normal Android Shell frontend:
 - every list/search/launch attempt is logged locally.
 
 This is not deep app control yet. Not implemented: ROM-level app governance, force-stop/close apps, permission mediation, usage stats, Notification Listener, Accessibility, Shizuku, root, background automation, local LLM, cloud or external AI.
+
+## Phase 8 — Permission Center UI
+
+Current status: **Phase 8 — Permission Center UI**.
+
+Implemented now:
+
+- transparent local capability list for Aelita-Fon / AelitaOS boundaries;
+- active, partial, planned, locked and forbidden capability statuses;
+- Permission Center card in the Shell (`Права`);
+- System Agent command support for `разрешения`, `права`, `permission center`, `центр разрешений`, `уровни доступа`, `что тебе доступно` and `что ты можешь контролировать`;
+- display-only summary that explains what works as Shell, what works as a normal Android app, what needs future user-granted access, what needs priv-app/ROM integration, and what is forbidden.
+
+Still not implemented:
+
+- real permission request flow;
+- Notification Listener;
+- Accessibility;
+- Usage Stats;
+- background services;
+- priv-app integration;
+- ROM framework hooks;
+- root/kernel actions;
+- local LLM;
+- cloud or external AI.

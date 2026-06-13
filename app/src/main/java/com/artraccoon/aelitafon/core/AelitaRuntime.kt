@@ -8,6 +8,7 @@ import com.artraccoon.aelitafon.device.NormalAppDeviceStateReader
 import com.artraccoon.aelitafon.evolution.LocalSuggestionEngine
 import com.artraccoon.aelitafon.logs.SharedPreferencesActionLogStore
 import com.artraccoon.aelitafon.memory.SharedPreferencesMemoryRepository
+import com.artraccoon.aelitafon.permissions.DefaultPermissionCenter
 import com.artraccoon.aelitafon.policy.DefaultPolicyEngine
 import com.artraccoon.aelitafon.projects.SharedPreferencesProjectRepository
 import com.artraccoon.aelitafon.systemagent.AelitaSystemAgent
@@ -32,6 +33,7 @@ data class AelitaRuntime(val systemAgent: AelitaSystemAgent) {
                     appRepository = NormalAppRepository(applicationContext),
                     appLauncher = NormalAppLauncher(applicationContext),
                     actionLogStore = actionLogStore,
+                    permissionCenter = DefaultPermissionCenter(),
                 ),
             )
         }

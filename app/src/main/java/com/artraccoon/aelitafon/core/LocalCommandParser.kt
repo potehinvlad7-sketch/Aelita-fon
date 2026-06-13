@@ -18,7 +18,8 @@ class LocalCommandParser {
             text in setOf("журнал", "покажи журнал", "что ты делала") -> LocalCommand.ShowJournal
             text in setOf("предложения", "идеи", "что ты предлагаешь") -> LocalCommand.ShowSuggestions
             text in setOf("статус", "система", "состояние") -> LocalCommand.ShowStatus
-            text in setOf("возможности", "что ты можешь", "права", "уровни доступа") -> LocalCommand.ShowCapabilities
+            text in setOf("возможности", "что ты можешь") -> LocalCommand.ShowCapabilities
+            text in setOf("разрешения", "права", "permission center", "центр разрешений", "уровни доступа", "что тебе доступно", "что ты можешь контролировать") -> LocalCommand.ShowPermissionCenter
             text in setOf("приложения", "покажи приложения", "список приложений") -> LocalCommand.ListApps
             text.startsWith("найди приложение ") -> LocalCommand.SearchApp(text.removePrefix("найди приложение ").trim())
             text.startsWith("поиск приложения ") -> LocalCommand.SearchApp(text.removePrefix("поиск приложения ").trim())
