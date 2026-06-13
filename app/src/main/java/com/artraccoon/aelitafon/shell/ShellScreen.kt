@@ -22,16 +22,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.artraccoon.aelitafon.device.CapabilityRegistry
+import com.artraccoon.aelitafon.device.DeviceStateSnapshot
+import com.artraccoon.aelitafon.device.DeviceStateReader
+import com.artraccoon.aelitafon.logs.InMemoryActionLogStore
+import com.artraccoon.aelitafon.policy.DefaultPolicyEngine
 import com.artraccoon.aelitafon.shell.components.AelitaHeader
 import com.artraccoon.aelitafon.shell.components.CommandPanel
 import com.artraccoon.aelitafon.shell.components.SystemNodeGrid
+import com.artraccoon.aelitafon.systemagent.AelitaSystemAgent
+import com.artraccoon.aelitafon.systemagent.DefaultAelitaSystemAgent
 import com.artraccoon.aelitafon.ui.theme.AelitaFonTheme
 import com.artraccoon.aelitafon.ui.theme.DeepBlack
 import com.artraccoon.aelitafon.ui.theme.MutedViolet
 import com.artraccoon.aelitafon.ui.theme.SoftViolet
 
 @Composable
-fun ShellScreen(modifier: Modifier = Modifier) {
+fun ShellScreen(
+    systemAgent: AelitaSystemAgent,
+    modifier: Modifier = Modifier,
+) {
     var shellState by remember { mutableStateOf(ShellState()) }
 
     Surface(
@@ -58,17 +68,20 @@ fun ShellScreen(modifier: Modifier = Modifier) {
                 },
                 onSendCommand = {
                     val command = shellState.commandText.trim()
-                    shellState = shellState.copy(
-                        localStatus = if (command.isEmpty()) {
-                            "Команда пока пустая"
-                        } else {
-                            "Команда принята локально: $command"
-                        },
-                    )
+                    if (command.isEmpty()) {
+                        shellState = shellState.copy(localStatus = "Команда пока пустая")
+                    } else {
+                        val result = systemAgent.handleCommand(command)
+                        shellState = shellState.copy(
+                            commandText = "",
+                            localStatus = result.userMessage,
+                        )
+                    }
                 },
                 onVoiceClick = {
+                    val result = systemAgent.openSection("Голос")
                     shellState = shellState.copy(
-                        localStatus = "Голосовой режим будет добавлен позже",
+                        localStatus = "Голосовой режим будет добавлен позже. ${result.userMessage}",
                     )
                 },
                 modifier = Modifier.fillMaxWidth(),
@@ -93,8 +106,9 @@ fun ShellScreen(modifier: Modifier = Modifier) {
                 SystemNodeGrid(
                     nodes = shellState.systemNodes,
                     onNodeClick = { node ->
+                        val result = systemAgent.openSection(node.title)
                         shellState = shellState.copy(
-                            localStatus = "Раздел пока готовится: ${node.title}",
+                            localStatus = result.userMessage,
                         )
                     },
                 )
@@ -109,6 +123,28 @@ fun ShellScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun ShellScreenPreview() {
     AelitaFonTheme {
-        ShellScreen()
+        ShellScreen(
+            systemAgent = DefaultAelitaSystemAgent(
+                deviceStateReader = previewDeviceStateReader,
+                capabilityRegistry = CapabilityRegistry(),
+                policyEngine = DefaultPolicyEngine(),
+                actionLogStore = InMemoryActionLogStore(),
+            ),
+        )
     }
+}
+
+
+private val previewDeviceStateReader = object : DeviceStateReader {
+    override fun readSnapshot(): DeviceStateSnapshot = DeviceStateSnapshot(
+        capturedAtMillis = 0L,
+        packageName = "com.artraccoon.aelitafon.preview",
+        appMode = "normal-app shell prototype",
+        localOnly = true,
+        privilegedAccess = false,
+        notificationAccess = false,
+        accessibilityAccess = false,
+        rootAccess = false,
+        romBridge = false,
+    )
 }

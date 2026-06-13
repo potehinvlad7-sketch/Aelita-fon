@@ -45,6 +45,25 @@ Potential future modules:
 - `systemagent`
 - `policy`
 
+
+## Current prototype status
+
+The first System Agent prototype is implemented as a safe normal Android app scaffold. It is connected to the Shell UI and handles deterministic local commands for status, capabilities, policy, logs, ROM context and app-control placeholders.
+
+Current boundaries:
+
+- no privileged Android behavior;
+- no real app control or app launching;
+- no installed-app querying;
+- no dangerous permissions;
+- no background service;
+- no ROM bridge;
+- no cloud backend;
+- no external AI API;
+- in-memory logs only.
+
+The prototype exists to prepare package structure and policy boundaries for later AelitaOS ROM/system integration without pretending that those privileges are active today.
+
 ## Current scope
 
 No service, permission, privileged code or background behavior is added in this PR.

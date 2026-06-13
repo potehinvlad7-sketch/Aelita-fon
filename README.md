@@ -6,7 +6,7 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 4 — ROM-first architecture pivot**.
+> ⚠️ Current status: **Phase 5 — System Agent normal-app prototype**.
 >
 > This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases.
 
@@ -17,9 +17,12 @@ The project has already completed the early prototype foundation:
 - documentation foundation;
 - minimal Android Kotlin + Jetpack Compose skeleton;
 - HOME launcher mode prototype;
-- Aelita Shell UI prototype.
+- Aelita Shell UI prototype;
+- non-privileged System Agent scaffold connected to Shell UI;
+- `PolicyEngine`, `CapabilityRegistry` and normal-app `DeviceStateReader`;
+- in-memory `ActionLog` for Shell-level events.
 
-The current app can represent the future Shell direction, but it remains a normal Android application prototype unless installed or integrated through future system/ROM work.
+The current app can represent the future Shell direction, but it remains a normal Android application prototype unless installed or integrated through future system/ROM work. The current System Agent is deterministic, local-only and non-privileged.
 
 ## New target
 
@@ -80,9 +83,13 @@ It does not yet include:
 - root commands;
 - exploit code;
 - cloud services;
-- external AI APIs.
+- external AI APIs;
+- real app control;
+- background services;
+- Android dangerous permissions;
+- network, cloud or external AI integrations.
 
-The Shell prototype may be selected as a HOME launcher, but launcher mode only replaces the home screen. It does not grant system privileges, app governance, permission mediation or framework control.
+The Shell prototype may be selected as a HOME launcher, but launcher mode only replaces the home screen. It does not grant system privileges, app governance, permission mediation or framework control. The System Agent reports this honestly and does not perform hidden automation.
 
 ## Core principles
 
@@ -117,7 +124,7 @@ Aelita-Fon can be selected as an Android Home launcher. This remains an early pr
 
 ## Android skeleton status
 
-Android skeleton status: **configured as a minimal Gradle project with a Shell UI prototype**.
+Android skeleton status: **configured as a minimal Gradle project with a Shell UI prototype and safe System Agent normal-app layer**.
 
 The app package is `com.artraccoon.aelitafon`. Gradle wrapper is intentionally not included because binary files are avoided.
 
