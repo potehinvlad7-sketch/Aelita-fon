@@ -55,3 +55,15 @@ For ROM-related PRs, Codex must list:
 - whether any executable scripts were added;
 - whether any flashing instructions were added;
 - whether any privileged permission declarations were added.
+
+## Strict ROM/device rules
+
+- Planning PRs must not include flashing commands.
+- Flashing commands require an explicit user request and a complete rollback checklist.
+- Never use non-`lisa` files for Xiaomi 11 Lite 5G NE work.
+- Never suggest bootloader relock after an unofficial ROM.
+- Never claim ROM flashability without artifact, checksum, source/base, and rollback plan.
+- Separate planning, building, and flashing PRs.
+- Always show whether binaries, scripts, and commands were added.
+- Never commit keystores or secrets.
+- Never commit APKs, ZIPs, images, vendor blobs, kernel images, recovery images, or other binary firmware artifacts unless a later explicit artifact policy allows it.

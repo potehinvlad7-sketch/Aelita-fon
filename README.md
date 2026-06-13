@@ -6,7 +6,7 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 7 — App List and Launch MVP**.
+> ⚠️ Current status: **Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack**.
 >
 > This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases.
 
@@ -209,3 +209,22 @@ Still not implemented:
 - root/kernel actions;
 - local LLM;
 - cloud or external AI.
+
+## Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack
+
+Current status: **Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack**.
+
+This phase records the real `lisa` test-device state, starts ROM readiness documentation, adds a Windows host preparation path, and defines the Alpha 0.1 gates for a cautious future flash candidate. Alpha 0.1 is **not flashable yet** from this repository. No ROM source tree, firmware artifact, APK, ZIP, image, vendor blob, kernel, recovery image, flashing script, or flashing command is added.
+
+Recorded user device state:
+
+- Xiaomi 11 Lite 5G NE (`lisa`);
+- unlocked bootloader;
+- HyperOS 2.0.6.0 UKQEUXM;
+- Android 14 / UKQ1.240624.001;
+- test phone, not daily driver;
+- data wipe allowed;
+- Windows PC available;
+- second working phone available.
+
+The next technical step is to produce a release APK build path for Aelita-Fon and select a verified `lisa` base ROM candidate with a verified stock restore package and rollback plan.
