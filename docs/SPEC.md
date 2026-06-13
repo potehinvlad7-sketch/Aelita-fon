@@ -312,3 +312,17 @@ All Local Core state is local-only. There is no network dependency, no cloud bac
 ## App List and Launch MVP
 
 Aelita can list launchable apps with `ACTION_MAIN` + `CATEGORY_LAUNCHER`, search that local launchable list by label/package name, and launch only after an explicit user command or Shell click. The implementation does not use `QUERY_ALL_PACKAGES`, does not read app data, does not request usage stats, does not inspect app permissions, and does not provide hidden control. Launching is limited to normal Android launcher intents.
+
+## Permission Center MVP
+
+Permission Center is a display-only, local capability map for Aelita-Fon and the future AelitaOS direction.
+
+It shows current capabilities and limits without requesting permissions. The MVP separates:
+
+- Shell abilities, such as HOME launcher UI;
+- normal Android app abilities, such as local memory, local projects, action log, launchable app list and explicit app launch intents;
+- future user-granted abilities, such as notification access, usage stats or Accessibility;
+- future privileged app and ROM/framework abilities;
+- forbidden areas, including root/kernel actions and hidden external AI/cloud behavior.
+
+Risky capabilities are marked honestly with status and risk labels. This PR does not add any dangerous Android permission, settings deep-link, background service, privileged behavior, ROM hook, root command, network dependency, telemetry or external AI API.

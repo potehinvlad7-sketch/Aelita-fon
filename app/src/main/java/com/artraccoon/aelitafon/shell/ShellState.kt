@@ -36,4 +36,8 @@ val defaultSystemNodes: List<SystemNode> = listOf(
         title = "Предложения",
         subtitle = "идеи и улучшения",
     ),
+    SystemNode(
+        title = "Права",
+        subtitle = "что доступно Аэлите",
+    ),
 )

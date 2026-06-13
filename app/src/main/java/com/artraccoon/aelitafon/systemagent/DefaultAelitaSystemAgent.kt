@@ -9,6 +9,7 @@ import com.artraccoon.aelitafon.device.CapabilityRegistry
 import com.artraccoon.aelitafon.device.DeviceStateReader
 import com.artraccoon.aelitafon.logs.ActionLogEntry
 import com.artraccoon.aelitafon.logs.ActionLogStore
+import com.artraccoon.aelitafon.permissions.PermissionCenter
 import com.artraccoon.aelitafon.policy.PolicyDecision
 import com.artraccoon.aelitafon.policy.PolicyEngine
 
@@ -20,6 +21,7 @@ class DefaultAelitaSystemAgent(
     private val appRepository: AppRepository,
     private val appLauncher: AppLauncher,
     private val actionLogStore: ActionLogStore,
+    private val permissionCenter: PermissionCenter,
     private val parser: LocalCommandParser = LocalCommandParser(),
 ) : AelitaSystemAgent {
     override fun getStatus(): SystemAgentStatus {
@@ -38,7 +40,8 @@ class DefaultAelitaSystemAgent(
                 "Системные привилегии и ROM-интеграция ещё не активны.\n" +
                 "Пакет: ${snapshot.packageName}\n" +
                 "Локальный режим: ${if (snapshot.localOnly) "да" else "нет"}\n" +
-                "Фоновый режим: не реализован.\n" + localSummary.userMessage,
+                "Фоновый режим: не реализован.\n" +
+                "Открой раздел Права, чтобы увидеть уровни доступа Аэлиты.\n" + localSummary.userMessage,
         )
     }
 
@@ -46,7 +49,8 @@ class DefaultAelitaSystemAgent(
         val command = parser.parse(input)
         return when (command) {
             LocalCommand.ShowStatus -> statusResult()
-            LocalCommand.ShowCapabilities -> capabilitiesResult()
+            LocalCommand.ShowCapabilities -> permissionCenterResult()
+            LocalCommand.ShowPermissionCenter -> permissionCenterResult()
             LocalCommand.ListApps -> listAppsResult()
             is LocalCommand.SearchApp -> searchAppsResult(command.query)
             is LocalCommand.LaunchApp -> launchAppResult(command.query)
@@ -68,6 +72,7 @@ class DefaultAelitaSystemAgent(
             "система" -> statusResult()
             "журнал" -> localCoreResult("журнал")
             "предложения" -> localCoreResult("предложения")
+            "права" -> permissionCenterResult()
             else -> openSectionResult("Раздел пока готовится: $sectionName")
         }
     }
@@ -85,6 +90,12 @@ class DefaultAelitaSystemAgent(
             "${it.level}. ${it.title}: ${it.status}, риск: ${it.riskLabel}. ${it.description}"
         }
         return result("Текущие уровни доступа Аэлиты:\n$message\n\nВажно: сеть, облако, внешние AI API, Accessibility, Notification Listener, root и ROM hooks не активны.", "SHOW_CAPABILITIES", decision)
+    }
+
+    private fun permissionCenterResult(): SystemAgentResult {
+        val decision = policyEngine.evaluate("SHOW_PERMISSION_CENTER")
+        actionLogStore.add("Открыт Permission Center", "permissions", decision.riskLabel)
+        return result(permissionCenter.getUserMessage(), "SHOW_PERMISSION_CENTER", decision)
     }
 
     private fun romResult(): SystemAgentResult {

@@ -78,3 +78,9 @@ No privileged control is implemented. App launching is limited to explicit user-
 ## Current status — App List and Launch MVP
 
 System Agent can route app list, search, and launch requests through normal Android APIs. There is no privileged behavior: no root, Accessibility, Notification Listener, shell automation, or background service. All app list/search/launch attempts are logged in the persistent local action log.
+
+## Current Permission Center status
+
+The System Agent can show a deterministic local Permission Center snapshot. Capability data is static, local and Russian-first so the Shell can explain what Aelita can do now, what is partial, what is planned, what is locked, and what is forbidden.
+
+There is no permission request flow yet. The System Agent does not enable Notification Listener, Accessibility, Usage Stats, background services, priv-app behavior, ROM hooks, root/kernel access, cloud, telemetry or external AI API access.

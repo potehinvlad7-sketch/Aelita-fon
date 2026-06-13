@@ -58,3 +58,9 @@
 ## Level 1 status — partially implemented
 
 Normal Android app APIs are partially implemented: launchable app list, local search, and user-requested launch. This is not app governance. Deeper control still requires ROM/framework integration and is outside this MVP.
+
+## Permission Center visibility
+
+Permission Center is the user-visible map of Aelita control levels. It explains which app-control surfaces are active, partial, planned, locked or forbidden.
+
+Level 0/1 behavior is partially active today through the Shell and normal Android app APIs: local UI, local state, launchable app listing and explicit user-requested launch intents. Level 2 and higher abilities remain planned or locked unless a future task adds a reviewed user-granted or privileged integration. Level 4 and higher require ROM/framework integration and are not claimed by the current Shell prototype.

@@ -34,6 +34,7 @@ import com.artraccoon.aelitafon.logs.InMemoryActionLogStore
 import com.artraccoon.aelitafon.evolution.LocalSuggestionEngine
 import com.artraccoon.aelitafon.memory.MemoryRepository
 import com.artraccoon.aelitafon.memory.MemoryEntry
+import com.artraccoon.aelitafon.permissions.DefaultPermissionCenter
 import com.artraccoon.aelitafon.policy.DefaultPolicyEngine
 import com.artraccoon.aelitafon.projects.ProjectEntry
 import com.artraccoon.aelitafon.projects.ProjectRepository
@@ -142,6 +143,7 @@ private fun ShellScreenPreview() {
                 appRepository = previewAppRepository,
                 appLauncher = previewAppLauncher,
                 actionLogStore = previewActionLogStore,
+                permissionCenter = DefaultPermissionCenter(),
             ),
         )
     }

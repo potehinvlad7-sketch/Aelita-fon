@@ -40,7 +40,7 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Shell UI connected to deterministic local agent commands.
 - No hidden services, privileged behavior, cloud or external AI API.
 
-## Phase 6 — Local Core MVP inside Shell — done — this PR
+## Phase 6 — Local Core MVP inside Shell — done
 
 - Persistent local memory and projects.
 - Persistent action log.
@@ -49,13 +49,13 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Rule-based local behavior only.
 - No cloud, network or external AI API.
 
-## Phase 7 — App list and launch MVP
+## Phase 7 — App list and launch MVP — done
 
 - Local app list where allowed by Android APIs.
 - Safe app launch through intents.
 - Visible action logging.
 
-## Phase 8 — Permission Center prototype
+## Phase 8 — Permission Center UI — this PR
 
 - Show capabilities, permission state and risk explanations.
 - No privileged permissions without explicit task.
@@ -66,19 +66,26 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Local memory model.
 - User-visible edit/delete/export direction.
 
-## Phase 10 — System Agent hardening
+## Phase 10 — Lisa device research pack
 
-- Harden command routing and policy boundaries.
-- Improve confirmations, export paths and auditability.
-- Keep normal-app limits honest until a separate privileged design phase.
+- Collect device-specific research for Xiaomi 11 Lite 5G NE / lisa.
+- Keep this as research documentation only.
 
-## Phase 11 — Privileged system app design
+## Phase 11 — Background Life placeholder
+
+- Design visible background-life boundaries without adding services yet.
+
+## Phase 12 — Notification Listener proposal layer
+
+- Propose user-granted notification observation without implementing hidden access.
+
+## Phase 13 — Privileged system app design
 
 - Design system app and priv-app boundaries.
 - Document permission requirements and risks.
 - No implementation until reviewed.
 
-## Phase 12 — ROM tree selection and lisa device research
+## Phase 14 — ROM tree selection and build environment
 
 - Choose base ROM direction.
 - Verify `lisa` device tree, vendor blobs, kernel and firmware requirements.
@@ -139,21 +146,24 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 
 - Phase 5 — System Agent normal-app prototype — done.
 - Phase 6 — Local Core MVP inside Shell — done.
-- Phase 7 — App list and launch MVP — this PR.
-- Phase 8 — Permission Center prototype.
+- Phase 7 — App list and launch MVP — done.
+- Phase 8 — Permission Center UI — this PR.
 - Phase 9 — Action Log and local memory hardening.
-- Phase 10 — System Agent hardening.
-- Phase 11 — Privileged system app design.
-- Phase 12 — ROM tree selection and lisa device research.
+- Phase 10 — Lisa device research pack.
+- Phase 11 — Background Life placeholder.
+- Phase 12 — Notification Listener proposal layer.
+- Phase 13 — Privileged system app design.
+- Phase 14 — ROM tree selection and build environment.
 
 
 ## Phase updates
 
 - Phase 6 — Local Core MVP inside Shell — done.
-- Phase 7 — App list and launch MVP — this PR.
-- Phase 8 — Permission Center UI.
+- Phase 7 — App list and launch MVP — done.
+- Phase 8 — Permission Center UI — this PR.
 - Phase 9 — Action Log and local memory hardening.
 - Phase 10 — Lisa device research pack.
-- Phase 11 — System Agent hardening.
-- Phase 12 — Privileged system app design.
-- Phase 13 — ROM tree selection and build environment.
+- Phase 11 — Background Life placeholder.
+- Phase 12 — Notification Listener proposal layer.
+- Phase 13 — Privileged system app design.
+- Phase 14 — ROM tree selection and build environment.

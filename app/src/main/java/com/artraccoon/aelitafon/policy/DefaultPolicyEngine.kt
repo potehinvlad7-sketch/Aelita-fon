@@ -4,6 +4,7 @@ class DefaultPolicyEngine : PolicyEngine {
     override fun evaluate(actionName: String): PolicyDecision = when (actionName) {
         "SHOW_STATUS" -> allowed("low", "Показ локального статуса безопасен.")
         "SHOW_CAPABILITIES" -> allowed("low", "Показ уровней доступа безопасен.")
+        "SHOW_PERMISSION_CENTER" -> allowed("low", "Показ центра разрешений безопасен и не запрашивает новые разрешения.")
         "SHOW_LOG" -> allowed("low", "Показ in-memory журнала безопасен.")
         "OPEN_SECTION" -> allowed("low", "Открытие раздела Shell является локальным no-op.")
         "LIST_APPS" -> allowed("low", "Показ launchable-приложений через обычные Android API.")

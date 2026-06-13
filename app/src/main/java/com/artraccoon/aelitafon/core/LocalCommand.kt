@@ -11,6 +11,7 @@ sealed class LocalCommand {
     data object ShowSuggestions : LocalCommand()
     data object ShowStatus : LocalCommand()
     data object ShowCapabilities : LocalCommand()
+    data object ShowPermissionCenter : LocalCommand()
     data object ListApps : LocalCommand()
     data class SearchApp(val query: String) : LocalCommand()
     data class LaunchApp(val query: String) : LocalCommand()
