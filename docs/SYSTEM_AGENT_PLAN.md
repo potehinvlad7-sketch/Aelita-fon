@@ -48,13 +48,13 @@ Potential future modules:
 
 ## Current prototype status
 
-The first System Agent prototype is implemented as a safe normal Android app scaffold. It is connected to the Shell UI and handles deterministic local commands for status, capabilities, policy, logs, ROM context and app-control placeholders.
+The first System Agent prototype is implemented as a safe normal Android app scaffold. It is connected to the Shell UI and handles deterministic local commands for status, capabilities, policy, logs, ROM context, and normal Android app list/search/launch requests.
 
 Current boundaries:
 
 - no privileged Android behavior;
-- no real app control or app launching;
-- no installed-app querying;
+- no privileged app control;
+- no non-launchable installed-app querying;
 - no dangerous permissions;
 - no background service;
 - no ROM bridge;
@@ -70,6 +70,11 @@ No service, permission, privileged code or background behavior is added in this 
 
 ## Current status — Local Core MVP
 
-The System Agent remains a normal Android app orchestrator. It now delegates local memory, project, journal, suggestion, and help commands to the Local Core while keeping status, capabilities, ROM information, app-control placeholders, and policy explanations honest about normal-app limits.
+The System Agent remains a normal Android app orchestrator. It now delegates local memory, project, journal, suggestion, and help commands to the Local Core while keeping status, capabilities, ROM information, normal Android app list/search/launch, and policy explanations honest about normal-app limits.
 
-No privileged control is implemented. There is no app launching, Accessibility service, Notification Listener, root bridge, Shizuku bridge, background service, cloud backend, external AI API, or ROM integration.
+No privileged control is implemented. App launching is limited to explicit user-requested Android intents. There is no Accessibility service, Notification Listener, root bridge, Shizuku bridge, background service, cloud backend, external AI API, or ROM integration.
+
+
+## Current status — App List and Launch MVP
+
+System Agent can route app list, search, and launch requests through normal Android APIs. There is no privileged behavior: no root, Accessibility, Notification Listener, shell automation, or background service. All app list/search/launch attempts are logged in the persistent local action log.

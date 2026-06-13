@@ -22,6 +22,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.artraccoon.aelitafon.apps.AppEntry
+import com.artraccoon.aelitafon.apps.AppLauncher
+import com.artraccoon.aelitafon.apps.AppRepository
+import com.artraccoon.aelitafon.apps.AppSearchResult
 import com.artraccoon.aelitafon.core.DefaultAelitaLocalCore
 import com.artraccoon.aelitafon.device.CapabilityRegistry
 import com.artraccoon.aelitafon.device.DeviceStateSnapshot
@@ -135,6 +139,9 @@ private fun ShellScreenPreview() {
                 capabilityRegistry = CapabilityRegistry(),
                 policyEngine = DefaultPolicyEngine(),
                 localCore = previewLocalCore,
+                appRepository = previewAppRepository,
+                appLauncher = previewAppLauncher,
+                actionLogStore = previewActionLogStore,
             ),
         )
     }
@@ -170,9 +177,27 @@ private val previewProjectRepository = object : ProjectRepository {
     override fun clearProjects(): Boolean = true
 }
 
+private val previewActionLogStore = InMemoryActionLogStore()
+
+private val previewAppRepository = object : AppRepository {
+    override fun getLaunchableApps(): List<AppEntry> = listOf(
+        AppEntry("com.example.calendar", "Calendar", "MainActivity", true),
+    )
+
+    override fun searchApps(query: String): AppSearchResult = AppSearchResult(
+        query = query,
+        matches = getLaunchableApps().filter { it.label.contains(query, ignoreCase = true) },
+        userMessage = "Preview app search",
+    )
+}
+
+private val previewAppLauncher = object : AppLauncher {
+    override fun launchApp(packageName: String): Boolean = true
+}
+
 private val previewLocalCore = DefaultAelitaLocalCore(
     memoryRepository = previewMemoryRepository,
     projectRepository = previewProjectRepository,
-    actionLogStore = InMemoryActionLogStore(),
+    actionLogStore = previewActionLogStore,
     suggestionEngine = LocalSuggestionEngine(),
 )
