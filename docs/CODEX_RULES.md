@@ -77,3 +77,12 @@ For ROM-related PRs, Codex must list:
 - A debug APK is only for local smoke testing and is not a ROM candidate.
 - A release APK must be smoke-tested before ROM integration.
 - Keep app build, ROM build, and flashing work in separate PRs.
+
+## GitHub Actions APK artifact rules
+
+- GitHub Actions APK artifacts are allowed for smoke testing only.
+- APK files must not be committed to the repository.
+- Debug APK artifacts must not be used as ROM release candidates.
+- Release APK signing is a separate future PR.
+- Workflows must not upload keystores, signing keys, signing passwords, or other secrets.
+- Debug APK artifact workflows must remain separate from ROM build, release signing, and flashing work.

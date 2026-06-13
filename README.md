@@ -6,9 +6,9 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack**.
+> ⚠️ Current status: **Phase 11 — Debug APK artifact workflow**.
 >
-> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases.
+> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon can now be built as a short-lived GitHub Actions debug APK artifact for local smoke testing only; release APK signing remains future work.
 
 ## Current completed pieces
 
@@ -143,6 +143,20 @@ gradle test
 
 No external AI API is used.
 
+## Phase 11 — Debug APK artifact workflow
+
+Current status: **Phase 11 — Debug APK artifact workflow**.
+
+Aelita-Fon can now be built as a debug APK artifact through GitHub Actions for manual smoke testing on the target `lisa` test phone. The artifact is a normal Android debug build, retained briefly by GitHub Actions, and must not be committed to the repository.
+
+Safety boundaries remain unchanged:
+
+- the ROM remains not flashable from this repository;
+- the debug APK is not a ROM candidate;
+- the debug APK is not release signed;
+- release APK signing remains future work;
+- APK, ZIP, IMG, keystore and signing-key files must not be committed.
+
 ## Previous status — Phase 6: Local Core MVP inside Shell
 
 This branch turns the normal-app System Agent prototype into a local offline core inside Aelita Shell.
@@ -212,7 +226,7 @@ Still not implemented:
 
 ## Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack
 
-Current status: **Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack**.
+Previous status: **Phase 9 — AelitaOS Alpha 0.1 Flash Candidate Pack**.
 
 This phase records the real `lisa` test-device state, starts ROM readiness documentation, adds a Windows host preparation path, and defines the Alpha 0.1 gates for a cautious future flash candidate. Alpha 0.1 is **not flashable yet** from this repository. No ROM source tree, firmware artifact, APK, ZIP, image, vendor blob, kernel, recovery image, flashing script, or flashing command is added.
 
