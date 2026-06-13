@@ -37,3 +37,21 @@
 - Технические идентификаторы можно оставлять на английском.
 - Все новые capabilities должны быть описаны в Permission Center и Action Log requirements.
 - Любой новый доступ к устройству должен объяснять риск для пользователя.
+
+## Strict ROM rules
+
+- Codex must never add flashing commands without an explicit task.
+- Codex must never add root or exploit code.
+- Codex must never add telemetry or cloud APIs.
+- Codex must never pretend a ROM is buildable before it is.
+- Codex must clearly mark placeholders.
+- Codex must keep every PR small, auditable and reversible.
+- Codex must not modify dangerous files or privileged permissions without an explicit task.
+
+For ROM-related PRs, Codex must list:
+
+- changed docs;
+- created folders;
+- whether any executable scripts were added;
+- whether any flashing instructions were added;
+- whether any privileged permission declarations were added.

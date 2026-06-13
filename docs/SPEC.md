@@ -269,3 +269,13 @@ Action Log обязателен для:
 - [ ] Есть Local Mind abstraction.
 - [ ] Все автономные действия логируются.
 - [ ] Evolution Engine не изменяет систему без подтверждения.
+
+## ROM-first product definition
+
+AelitaOS is the actual product. Aelita-Fon is the current Android app prototype and future Shell component of that product.
+
+The end goal is a phone where Aelita is the primary interface and local intelligence layer. Aelita should become the user's local system governor, policy layer, planner, memory, permission visibility layer and future local AI controller inside a custom Android-based ROM.
+
+This project is not a Google Assistant clone. It is not a normal launcher clone. It is a custom ROM project with an AI-native system shell.
+
+The current app should therefore be treated as the Aelita Shell / system launcher frontend, not as the whole product. True application governance, permission mediation, SystemUI behavior and framework-level control require future system app, privileged app or ROM/framework integration.

@@ -1,149 +1,125 @@
-# Aelita-Fon Roadmap
+# AelitaOS / Aelita-Fon ROM-first Roadmap
 
-## Phase 0. Repository and documentation
+This roadmap pivots the project from an Android launcher prototype into the architecture path for AelitaOS: a future custom Android-based ROM for Xiaomi 11 Lite 5G NE (`lisa`).
 
-Цель: создать документационную основу проекта без Android-кода.
+## Phase 0 — Repository and documentation foundation — done
 
-- README.md.
-- SPEC.md.
-- ROADMAP.md.
-- CODEX_RULES.md.
-- ARCHITECTURE.md.
-- Зафиксировать offline-first и local-only ограничения.
+- Initial README, specification, roadmap and Codex rules.
+- Local-first and no external AI API boundaries established.
 
-## Phase 1. Android skeleton
+## Phase 1 — Android Shell skeleton — done
 
-Цель: добавить минимальный Android-проект без бизнес-логики.
+- Minimal Android Kotlin project.
+- Jetpack Compose app skeleton.
+- No business logic or privileged behavior.
 
-- Настроить структуру проекта.
-- Добавить базовую Activity.
-- Добавить минимальную тему.
-- Не добавлять внешние AI API.
+## Phase 2 — Launcher mode prototype — done
 
-## Phase 2. Launcher mode
+- HOME launcher intent setup.
+- Aelita-Fon can be selected as home launcher.
+- Launcher mode limitations documented.
 
-Статус: **implemented as a minimal prototype**.
+## Phase 3 — Shell UI prototype — done
 
-Цель: подготовить Aelita-Fon как launcher shell.
+- Russian-first Aelita Shell screen.
+- Command surface and system node placeholders.
+- No real app governance or system privileges.
 
-- Добавить launcher intent filters.
-- Проверить поведение Home.
-- Описать ограничения Android launcher mode.
-- Launcher mode does not give root or system access.
-- Launcher mode only replaces the Android home screen behavior.
+## Phase 4 — ROM-first architecture pivot — this PR
 
-## Phase 3. Shell UI
+- Reframe AelitaOS as the actual product.
+- Reframe Aelita-Fon as Shell / launcher component.
+- Add ROM, device, security, app-control and build-pipeline planning docs.
+- Add `rom/` placeholders without flashable or executable content.
 
-Статус: **implemented as a first UI prototype**.
+## Phase 5 — Local Core MVP inside Shell
 
-Цель: создать Russian-first главный экран Aelita.
+- Local command model inside the Shell.
+- Rule-based local behavior only.
+- No cloud or external AI API.
 
-- Командная строка.
-- Карточки статуса.
-- Быстрые действия.
-- Состояние offline/local-only.
-- Первый прототип включает домашний Shell screen, командную панель и шесть системных узлов.
-- Карточки системных узлов пока являются placeholders; будущие PR добавят реальные модули и поведение.
+## Phase 6 — App list and launch MVP
 
-## Phase 4. Room database
+- Local app list where allowed by Android APIs.
+- Safe app launch through intents.
+- Visible action logging.
 
-Цель: добавить локальное хранилище.
+## Phase 7 — Permission Center prototype
 
-- Room schema.
-- Миграционная стратегия.
-- Локальные DAO.
-- Без cloud sync.
+- Show capabilities, permission state and risk explanations.
+- No privileged permissions without explicit task.
 
-## Phase 5. Memory
+## Phase 8 — Action Log and local memory hardening
 
-Цель: реализовать локальную память Aelita.
+- Durable local action log.
+- Local memory model.
+- User-visible edit/delete/export direction.
 
-- Создание, просмотр, редактирование и удаление памяти.
-- Теги и типы памяти.
-- Связи с проектами и задачами.
+## Phase 9 — Aelita System Agent normal-app prototype
 
-## Phase 6. Projects
+- Non-privileged agent abstraction.
+- Local state coordination inside normal Android limits.
+- No hidden services.
 
-Цель: добавить проекты и задачи.
+## Phase 10 — Privileged system app design
 
-- Project model.
-- Task model.
-- Статусы и приоритеты.
-- Привязка команд к проектам.
+- Design system app and priv-app boundaries.
+- Document permission requirements and risks.
+- No implementation until reviewed.
 
-## Phase 7. App launcher
+## Phase 11 — ROM tree selection and lisa device research
 
-Цель: добавить безопасный запуск приложений.
+- Choose base ROM direction.
+- Verify `lisa` device tree, vendor blobs, kernel and firmware requirements.
+- Document anti-rollback and restore path.
 
-- Получение списка приложений.
-- Запуск через Android intents.
-- Логирование запусков.
+## Phase 12 — AelitaOS build environment
 
-## Phase 8. Action Log
+- Host Linux build environment plan.
+- Source tree and manifest structure.
+- Signing and artifact policy.
 
-Цель: сделать журнал действий обязательной частью системы.
+## Phase 13 — Include Aelita Shell as system app / priv-app
 
-- Записи действий.
-- Фильтры.
-- Детали записи.
-- Связь с разрешениями и Device Bridge.
+- Integrate Shell into ROM build as system component.
+- Keep privileges minimal and documented.
 
-## Phase 9. Background Life
+## Phase 14 — Google replacement defaults
 
-Цель: подготовить видимый и отключаемый фоновый режим.
+- Launcher default.
+- Assistant role direction.
+- Local search entry and app suggestions.
+- No mandatory GMS dependency.
 
-- Foreground service strategy.
-- Ограничения энергосбережения.
-- Видимый статус.
-- Полное логирование действий.
+## Phase 15 — Notification and usage observation layer
 
-## Phase 10. Permission Center
+- User-visible notification and usage observation.
+- Explicit permissions.
+- Action log integration.
 
-Цель: создать центр разрешений и возможностей.
+## Phase 16 — Local Mind integration
 
-- Список capabilities.
-- Объяснения рисков.
-- Статусы доступов.
-- Инструкции включения и отключения.
+- Local model or local reasoning integration.
+- No external AI APIs.
+- User-visible data boundaries.
 
-## Phase 11. Device Bridge placeholders
+## Phase 17 — Framework/SystemUI hooks
 
-Цель: добавить безопасные заглушки для будущих уровней доступа.
+- Explicit, audited and reversible ROM hooks.
+- SystemUI and framework integration only after rollback plan exists.
 
-- Accessibility placeholder.
-- Notification Listener placeholder.
-- Usage Access placeholder.
-- Storage Access Framework placeholder.
-- Shizuku placeholder.
-- Root placeholder.
-- System app placeholder.
-- Custom ROM placeholder.
+## Phase 18 — First experimental AelitaOS build for lisa
 
-## Phase 12. Local Mind abstraction
+- Experimental build artifact for verified `lisa` test device.
+- Not for daily-driver use until validated.
 
-Цель: подготовить интерфейс локального интеллекта.
+## Phase 19 — Flash test and rollback validation
 
-- `LocalMind` contract.
-- `RuleBasedMind` для MVP.
-- `MockMind` для тестирования UI.
-- План будущей локальной LLM-интеграции.
+- Controlled test flash.
+- Restore path validation.
+- Logs and failure documentation.
 
-## Phase 13. Evolution Engine
+## Phase 20 — Daily-driver hardening
 
-Цель: добавить механизм предложений по развитию Aelita.
-
-- Анализ локальных паттернов.
-- Видимые предложения.
-- Подтверждение пользователя.
-- Запрет silent self-modification.
-- Логирование изменений.
-
-## Phase 14. Polish and docs
-
-Цель: стабилизировать MVP и расширить документацию.
-
-- UX polish.
-- Обновление SPEC.
-- Документация ограничений.
-- Руководство локальной сборки.
-- Подготовка следующих задач.
+- Stability, battery, privacy and rollback hardening.
+- Long-term maintenance process.
