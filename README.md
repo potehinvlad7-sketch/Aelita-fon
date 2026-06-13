@@ -6,9 +6,9 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 11 — Debug APK artifact workflow**.
+> ⚠️ Current status: **Phase 12 — Debug APK CI hardening**.
 >
-> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon can now be built as a short-lived GitHub Actions debug APK artifact for local smoke testing only; release APK signing remains future work.
+> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon has a GitHub Actions debug APK artifact workflow for local smoke testing only. Its first run failed at the Gradle build step, so the current phase hardens CI with explicit Android SDK installation and diagnostic logs; release APK signing remains future work.
 
 ## Current completed pieces
 
@@ -143,11 +143,11 @@ gradle test
 
 No external AI API is used.
 
-## Phase 11 — Debug APK artifact workflow
+## Phase 12 — Debug APK CI hardening
 
-Current status: **Phase 11 — Debug APK artifact workflow**.
+Current status: **Phase 12 — Debug APK CI hardening**.
 
-Aelita-Fon can now be built as a debug APK artifact through GitHub Actions for manual smoke testing on the target `lisa` test phone. The artifact is a normal Android debug build, retained briefly by GitHub Actions, and must not be committed to the repository.
+Aelita-Fon has a debug APK artifact workflow in GitHub Actions for manual smoke testing on the target `lisa` test phone. The first CI run reached the Gradle build step and failed before artifact upload, so this phase hardens the workflow with explicit Android SDK 36 installation, Gradle stacktraces, dependency diagnostics, repository diagnostics, and APK output discovery. The artifact remains a normal Android debug build, retained briefly by GitHub Actions, and must not be committed to the repository.
 
 Safety boundaries remain unchanged:
 
