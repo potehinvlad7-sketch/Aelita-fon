@@ -40,3 +40,16 @@ Record the result outside the APK file itself:
 - test date;
 - tester;
 - pass/fail notes.
+
+## Debug APK smoke test source
+
+For pre-ROM smoke testing, the APK source may be the GitHub Actions artifact named `Aelita-Fon-debug-apk` from the `Build Aelita-Fon Debug APK` workflow.
+
+Rules for this source:
+
+- download the artifact manually from GitHub Actions;
+- do not commit the downloaded APK;
+- do not treat the debug APK as a release artifact;
+- do not treat the debug APK as a ROM candidate;
+- do not include the debug APK in the Alpha 0.1 ROM image;
+- record the source commit and SHA-256 checksum before testing.
