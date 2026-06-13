@@ -141,3 +141,34 @@ gradle test
 ```
 
 No external AI API is used.
+
+## Current status — Phase 6: Local Core MVP inside Shell
+
+This branch turns the normal-app System Agent prototype into a local offline core inside Aelita Shell.
+
+Implemented now:
+
+- persistent local memory stored on device;
+- persistent local projects stored on device;
+- persistent local action log;
+- deterministic Russian-first command parser;
+- local suggestions generated from memory, projects, and log state;
+- System Agent orchestration over Local Core;
+- Shell UI cards for memory, projects, applications placeholder, system status, journal, and suggestions.
+
+Storage is temporary MVP storage based on Android `SharedPreferences` plus built-in `org.json`. The app does not use Room yet and does not contact any network, cloud, or external AI API.
+
+Still not implemented:
+
+- real app launching;
+- Permission Center UI;
+- Room database;
+- background services;
+- Accessibility;
+- Notification Listener;
+- Shizuku;
+- root;
+- ROM integration;
+- local LLM;
+- cloud;
+- external AI API.
