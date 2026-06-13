@@ -228,3 +228,19 @@ Recorded user device state:
 - second working phone available.
 
 The next technical step is to produce a release APK build path for Aelita-Fon and select a verified `lisa` base ROM candidate with a verified stock restore package and rollback plan.
+
+## Phase 10 — Aelita-Fon release APK path
+
+Current status: **Phase 10 — Aelita-Fon release APK path**.
+
+The ROM readiness pack for Xiaomi 11 Lite 5G NE (`lisa`) already exists, and this phase prepares the Aelita-Fon APK artifact path for later Alpha 0.1 evaluation.
+
+This phase adds documentation for safe APK production and validation:
+
+- release APK artifacts must be signed locally with keys that are never committed;
+- release APK artifacts must have SHA-256 checksums recorded;
+- debug APKs are only for local smoke tests and are not ROM candidates;
+- the exact APK must be tested on current stock/current HyperOS before ROM inclusion is considered;
+- APK files are not committed to this repository.
+
+The repository is still **not flashable yet**. This phase does not add a ROM source tree, APK artifact, ZIP, image, flashing script, flashing command, privileged permission, cloud service, or external AI API.
