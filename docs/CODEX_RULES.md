@@ -67,3 +67,13 @@ For ROM-related PRs, Codex must list:
 - Always show whether binaries, scripts, and commands were added.
 - Never commit keystores or secrets.
 - Never commit APKs, ZIPs, images, vendor blobs, kernel images, recovery images, or other binary firmware artifacts unless a later explicit artifact policy allows it.
+
+## APK artifact rules
+
+- Never commit keystores.
+- Never commit signing keys or signing passwords.
+- Never commit APK artifacts unless explicitly requested by a later artifact policy task.
+- Always record a SHA-256 checksum for release APK artifacts.
+- A debug APK is only for local smoke testing and is not a ROM candidate.
+- A release APK must be smoke-tested before ROM integration.
+- Keep app build, ROM build, and flashing work in separate PRs.

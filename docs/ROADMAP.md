@@ -13,27 +13,27 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Phase 6 — Local Core MVP inside Shell — done.
 - Phase 7 — App list and launch MVP — done.
 - Phase 8 — Permission Center UI — done.
+- Phase 9 — Alpha 0.1 Flash Candidate Pack — done.
 
 ## Current phase
 
-## Phase 9 — Alpha 0.1 Flash Candidate Pack — this PR
+## Phase 10 — Aelita-Fon release APK build path — this PR
 
-- Record the known Xiaomi 11 Lite 5G NE / `lisa` test-device state.
-- Add Alpha 0.1 target and flash-candidate gates.
-- Add Windows host preparation and build-host requirements.
-- Add base ROM research and candidate tracking docs.
-- Add rollback, rescue, and flashing red-line docs.
-- Keep the PR documentation-only: no binaries, no APKs, no ZIPs, no images, no scripts, no flashing commands, no root commands, and no ROM buildability claim.
+- Document the safe debug and release APK build path.
+- Require local release signing without committed keystores or keys.
+- Require SHA-256 checksum recording for release APK artifacts.
+- Define the HyperOS APK smoke test checklist before ROM inclusion.
+- Draft future ROM preload placement options without claiming ROM buildability.
+- Keep the PR safe: no APKs, no binaries, no keystores, no flashing commands, no dangerous permissions, no `INTERNET` permission, and no ROM buildability claim.
 
 ## Next phases
 
-- Phase 10 — Aelita-Fon release APK build path.
-- Phase 11 — Lisa base ROM candidate selection.
-- Phase 12 — Stock restore package verification.
-- Phase 13 — Base ROM smoke flash planning.
-- Phase 14 — Aelita preloaded/system app integration draft.
-- Phase 15 — Alpha 0.1 build candidate.
-- Phase 16 — Alpha 0.1 flash review.
+- Phase 11 — Build/test APK on Windows.
+- Phase 12 — Lisa base ROM candidate selection.
+- Phase 13 — Stock restore package verification.
+- Phase 14 — Base ROM smoke flash planning.
+- Phase 15 — Aelita preloaded/system app integration draft.
+- Phase 16 — Alpha 0.1 build candidate review.
 - Phase 17 — Controlled install test.
 
 ## Long-term phases
