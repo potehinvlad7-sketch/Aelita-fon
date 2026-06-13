@@ -1,11 +1,14 @@
 package com.artraccoon.aelitafon.systemagent
 
+import com.artraccoon.aelitafon.apps.AppLauncher
+import com.artraccoon.aelitafon.apps.AppRepository
 import com.artraccoon.aelitafon.core.AelitaLocalCore
 import com.artraccoon.aelitafon.core.LocalCommand
 import com.artraccoon.aelitafon.core.LocalCommandParser
 import com.artraccoon.aelitafon.device.CapabilityRegistry
 import com.artraccoon.aelitafon.device.DeviceStateReader
 import com.artraccoon.aelitafon.logs.ActionLogEntry
+import com.artraccoon.aelitafon.logs.ActionLogStore
 import com.artraccoon.aelitafon.policy.PolicyDecision
 import com.artraccoon.aelitafon.policy.PolicyEngine
 
@@ -14,6 +17,9 @@ class DefaultAelitaSystemAgent(
     private val capabilityRegistry: CapabilityRegistry,
     private val policyEngine: PolicyEngine,
     private val localCore: AelitaLocalCore,
+    private val appRepository: AppRepository,
+    private val appLauncher: AppLauncher,
+    private val actionLogStore: ActionLogStore,
     private val parser: LocalCommandParser = LocalCommandParser(),
 ) : AelitaSystemAgent {
     override fun getStatus(): SystemAgentStatus {
@@ -41,7 +47,9 @@ class DefaultAelitaSystemAgent(
         return when (command) {
             LocalCommand.ShowStatus -> statusResult()
             LocalCommand.ShowCapabilities -> capabilitiesResult()
-            LocalCommand.AppsPlaceholder -> appControlPlaceholderResult()
+            LocalCommand.ListApps -> listAppsResult()
+            is LocalCommand.SearchApp -> searchAppsResult(command.query)
+            is LocalCommand.LaunchApp -> launchAppResult(command.query)
             LocalCommand.RomInfo -> romResult()
             else -> localCoreResult(input)
         }
@@ -56,7 +64,7 @@ class DefaultAelitaSystemAgent(
         return when (normalized) {
             "память" -> localCoreResult("память")
             "проекты" -> localCoreResult("проекты")
-            "приложения" -> appControlPlaceholderResult()
+            "приложения" -> listAppsResult()
             "система" -> statusResult()
             "журнал" -> localCoreResult("журнал")
             "предложения" -> localCoreResult("предложения")
@@ -89,9 +97,55 @@ class DefaultAelitaSystemAgent(
         )
     }
 
-    private fun appControlPlaceholderResult(): SystemAgentResult {
-        val decision = policyEngine.evaluate("PLACEHOLDER_APP_CONTROL")
-        return result("Запуск приложений будет отдельным PR. Сейчас Аэлита только готовит уровень контроля.", "PLACEHOLDER_APP_CONTROL", decision)
+    private fun listAppsResult(): SystemAgentResult {
+        val decision = policyEngine.evaluate("LIST_APPS")
+        val apps = appRepository.getLaunchableApps()
+        actionLogStore.add("Показан список приложений", "apps", decision.riskLabel)
+        val list = apps.take(30).joinToString("\n") { "• ${it.label} (${it.packageName})" }
+        val message = if (apps.isEmpty()) {
+            "Launchable-приложения не найдены. Это обычный Android-запуск приложений, не ROM-контроль."
+        } else {
+            "Приложения (${apps.size}):\n$list\n\nЭто обычный Android-запуск приложений, не ROM-контроль."
+        }
+        return result(message, "LIST_APPS", decision)
+    }
+
+    private fun searchAppsResult(query: String): SystemAgentResult {
+        val decision = policyEngine.evaluate("SEARCH_APPS")
+        val search = appRepository.searchApps(query)
+        actionLogStore.add("Поиск приложения: ${query.ifBlank { "<пусто>" }}", "apps", decision.riskLabel)
+        return result(search.userMessage, "SEARCH_APPS", decision)
+    }
+
+    private fun launchAppResult(query: String): SystemAgentResult {
+        val search = appRepository.searchApps(query)
+        if (query.isBlank() || search.matches.isEmpty()) {
+            val decision = policyEngine.evaluate("LAUNCH_APP_FAILED")
+            actionLogStore.add("Не удалось запустить приложение: ${query.ifBlank { "<пусто>" }}", "apps", decision.riskLabel)
+            return result("Не нашла launchable-приложение: ${query.ifBlank { "<пустой запрос>" }}", "LAUNCH_APP_FAILED", decision)
+        }
+        val normalizedQuery = query.trim().lowercase()
+        val exactMatches = search.matches.filter {
+            it.label.lowercase() == normalizedQuery || it.packageName.lowercase() == normalizedQuery
+        }
+        val launchCandidate = exactMatches.singleOrNull() ?: search.matches.singleOrNull()
+        if (launchCandidate == null) {
+            val decision = policyEngine.evaluate("LAUNCH_APP_FAILED")
+            actionLogStore.add("Несколько приложений подходят под запрос: $query", "apps", decision.riskLabel)
+            val candidates = search.matches.joinToString("\n") { "• ${it.label} (${it.packageName})" }
+            return result("Нашла несколько вариантов. Уточни команду:\n$candidates", "LAUNCH_APP_FAILED", decision)
+        }
+        val app = launchCandidate
+        val decision = policyEngine.evaluate("LAUNCH_APP")
+        val launched = decision.allowed && appLauncher.launchApp(app)
+        return if (launched) {
+            actionLogStore.add("Запуск приложения: ${app.label}/${app.packageName}", "apps", decision.riskLabel)
+            result("Открываю: ${app.label}", "LAUNCH_APP", decision)
+        } else {
+            val failed = policyEngine.evaluate("LAUNCH_APP_FAILED")
+            actionLogStore.add("Не удалось запустить приложение: $query", "apps", failed.riskLabel)
+            result("Не удалось запустить приложение через обычный Android Intent: ${app.label}", "LAUNCH_APP_FAILED", failed)
+        }
     }
 
     private fun localCoreResult(input: String): SystemAgentResult {

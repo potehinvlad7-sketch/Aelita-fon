@@ -19,7 +19,14 @@ class LocalCommandParser {
             text in setOf("предложения", "идеи", "что ты предлагаешь") -> LocalCommand.ShowSuggestions
             text in setOf("статус", "система", "состояние") -> LocalCommand.ShowStatus
             text in setOf("возможности", "что ты можешь", "права", "уровни доступа") -> LocalCommand.ShowCapabilities
-            text == "приложения" || text.startsWith("открой ") || text.startsWith("запусти ") -> LocalCommand.AppsPlaceholder
+            text in setOf("приложения", "покажи приложения", "список приложений") -> LocalCommand.ListApps
+            text.startsWith("найди приложение ") -> LocalCommand.SearchApp(text.removePrefix("найди приложение ").trim())
+            text.startsWith("поиск приложения ") -> LocalCommand.SearchApp(text.removePrefix("поиск приложения ").trim())
+            text.startsWith("открой приложение ") -> LocalCommand.LaunchApp(text.removePrefix("открой приложение ").trim())
+            text.startsWith("запусти приложение ") -> LocalCommand.LaunchApp(text.removePrefix("запусти приложение ").trim())
+            text.startsWith("открой ") -> LocalCommand.LaunchApp(text.removePrefix("открой ").trim())
+            text.startsWith("запусти ") -> LocalCommand.LaunchApp(text.removePrefix("запусти ").trim())
+            text.startsWith("приложение ") -> LocalCommand.SearchApp(text.removePrefix("приложение ").trim())
             text in setOf("прошивка", "rom", "aelitaos", "lisa", "лиза") -> LocalCommand.RomInfo
             text in setOf("помощь", "команды", "что умеешь") -> LocalCommand.Help
             else -> LocalCommand.Unknown

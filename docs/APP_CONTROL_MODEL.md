@@ -53,3 +53,8 @@
 - Aelita must not silently exfiltrate data.
 - Aelita must not perform destructive actions without confirmation.
 - Aelita's power comes from being built into the user's own ROM, not from malware behavior.
+
+
+## Level 1 status — partially implemented
+
+Normal Android app APIs are partially implemented: launchable app list, local search, and user-requested launch. This is not app governance. Deeper control still requires ROM/framework integration and is outside this MVP.

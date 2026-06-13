@@ -1,6 +1,8 @@
 package com.artraccoon.aelitafon.core
 
 import android.content.Context
+import com.artraccoon.aelitafon.apps.NormalAppLauncher
+import com.artraccoon.aelitafon.apps.NormalAppRepository
 import com.artraccoon.aelitafon.device.CapabilityRegistry
 import com.artraccoon.aelitafon.device.NormalAppDeviceStateReader
 import com.artraccoon.aelitafon.evolution.LocalSuggestionEngine
@@ -27,6 +29,9 @@ data class AelitaRuntime(val systemAgent: AelitaSystemAgent) {
                     capabilityRegistry = CapabilityRegistry(),
                     policyEngine = DefaultPolicyEngine(),
                     localCore = localCore,
+                    appRepository = NormalAppRepository(applicationContext),
+                    appLauncher = NormalAppLauncher(applicationContext),
+                    actionLogStore = actionLogStore,
                 ),
             )
         }

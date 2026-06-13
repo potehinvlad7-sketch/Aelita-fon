@@ -27,7 +27,9 @@ class DefaultAelitaLocalCore(
         LocalCommand.ShowSuggestions -> showSuggestions()
         LocalCommand.ShowStatus -> safeMessage(getSummary().userMessage, "local_status", "status")
         LocalCommand.ShowCapabilities -> safeMessage(capabilitiesText(), "local_capabilities", "capabilities")
-        LocalCommand.AppsPlaceholder -> safeMessage("Запуск приложений будет отдельным PR. Сейчас Аэлита только готовит уровень контроля.", "apps_placeholder", "apps")
+        LocalCommand.ListApps -> safeMessage("Приложения доступны через System Agent: обычный Android-запуск, не ROM-контроль.", "LIST_APPS", "apps")
+        is LocalCommand.SearchApp -> safeMessage("Поиск приложений выполняет System Agent: ${command.query}", "SEARCH_APPS", "apps")
+        is LocalCommand.LaunchApp -> safeMessage("Запуск приложений выполняет System Agent только по явной команде: ${command.query}", "LAUNCH_APP", "apps")
         LocalCommand.RomInfo -> safeMessage("ROM-интеграция не активна. Перед любыми прошивочными действиями нужен отдельный анализ lisa device tree, vendor blobs и rollback path.", "rom_info", "rom")
         LocalCommand.Help -> safeMessage(helpText(), "help", "help")
         LocalCommand.Unknown -> safeMessage("Я пока не умею выполнять эту команду. Попытка записана в журнал.", "unknown", "unknown")
@@ -84,7 +86,7 @@ class DefaultAelitaLocalCore(
         return LocalCommandResult(message, actionName)
     }
 
-    private fun capabilitiesText() = "Я умею локально: запоминать факты, вести проекты, показывать журнал, предложения и статус. Я не запускаю приложения, не имею root/Accessibility/Notification Listener, не использую сеть, облако или внешние AI API."
+    private fun capabilitiesText() = "Я умею локально: запоминать факты, вести проекты, показывать журнал, предложения и статус. Я запускаю приложения только по явной команде через обычные Android Intent; не имею root/Accessibility/Notification Listener, не использую сеть, облако или внешние AI API."
 
-    private fun helpText() = "Команды: запомни <текст>, память, добавь проект <название>, проекты, журнал, предложения, статус, возможности, приложения, прошивка. Очистка памяти и проектов появится позже только с подтверждением."
+    private fun helpText() = "Команды: запомни <текст>, память, добавь проект <название>, проекты, журнал, предложения, статус, возможности, приложения, найди приложение <название>, открой <название>, прошивка. Очистка памяти и проектов появится позже только с подтверждением."
 }

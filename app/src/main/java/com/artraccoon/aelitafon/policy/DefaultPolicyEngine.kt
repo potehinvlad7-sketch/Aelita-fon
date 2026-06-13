@@ -6,7 +6,10 @@ class DefaultPolicyEngine : PolicyEngine {
         "SHOW_CAPABILITIES" -> allowed("low", "Показ уровней доступа безопасен.")
         "SHOW_LOG" -> allowed("low", "Показ in-memory журнала безопасен.")
         "OPEN_SECTION" -> allowed("low", "Открытие раздела Shell является локальным no-op.")
-        "PLACEHOLDER_APP_CONTROL" -> allowed("medium", "Контроль приложений разрешён только как архитектурный placeholder без запуска приложений.")
+        "LIST_APPS" -> allowed("low", "Показ launchable-приложений через обычные Android API.")
+        "SEARCH_APPS" -> allowed("low", "Локальный поиск по списку launchable-приложений.")
+        "LAUNCH_APP" -> allowed("medium", "Запуск приложения выполняется только по явной команде пользователя через обычный Android Intent.")
+        "LAUNCH_APP_FAILED" -> allowed("low", "Не удалось запустить приложение; действие ограничено обычными Android API.")
         "UNKNOWN_COMMAND" -> allowed("low", "Неизвестная команда записывается как безопасный no-op.")
         else -> PolicyDecision(
             allowed = false,

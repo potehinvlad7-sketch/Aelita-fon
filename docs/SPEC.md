@@ -292,7 +292,7 @@ The current app should therefore be treated as the Aelita Shell / system launche
 - `DeviceStateReader`, ограниченный безопасной информацией normal-app уровня;
 - persistent `ActionLogStore` на `SharedPreferences` для Local Core MVP; Room и фоновая синхронизация не используются.
 
-Все текущие действия являются локальными deterministic no-op операциями или статусными отчётами. Прототип не запрашивает опасные Android permissions, не читает список установленных приложений, не запускает приложения, не использует Accessibility, Notification Listener, root, сеть, cloud backend или внешний AI API.
+Все текущие действия локальны и normal-app безопасны. Прототип не запрашивает опасные Android permissions, перечисляет только launchable-приложения через launcher intent, запускает приложения только по явной команде пользователя, не использует Accessibility, Notification Listener, root, сеть, cloud backend или внешний AI API.
 
 ## Local Core MVP
 
@@ -300,10 +300,15 @@ Aelita Shell now contains a normal-app Local Core MVP. The user path is determin
 
 `command -> parser -> System Agent policy/orchestration -> Local Core -> persistent storage -> action log -> response`.
 
-The Local Core supports Russian-first commands for memory, projects, journal, suggestions, status/help, app-control placeholders, and ROM status placeholders. It does not implement real AI, cloud calls, installed-app access, app launching, root operations, Accessibility control, Notification Listener control, or ROM hooks.
+The Local Core supports Russian-first commands for memory, projects, journal, suggestions, status/help, normal Android app list/search/launch, and ROM status placeholders. It does not implement real AI, cloud calls, non-launchable installed-app access, root operations, Accessibility control, Notification Listener control, or ROM hooks.
 
 ### Storage
 
 The MVP uses Android `SharedPreferences` with built-in `org.json` JSON arrays for memory entries, project entries, and the action log. JSON parsing is defensive: malformed storage should not crash the app and should fall back to empty lists with a warning log. This is intentionally temporary; a later hardening phase can migrate local state to Room after the data model stabilizes.
 
 All Local Core state is local-only. There is no network dependency, no cloud backend, and no external AI API.
+
+
+## App List and Launch MVP
+
+Aelita can list launchable apps with `ACTION_MAIN` + `CATEGORY_LAUNCHER`, search that local launchable list by label/package name, and launch only after an explicit user command or Shell click. The implementation does not use `QUERY_ALL_PACKAGES`, does not read app data, does not request usage stats, does not inspect app permissions, and does not provide hidden control. Launching is limited to normal Android launcher intents.

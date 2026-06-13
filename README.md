@@ -6,7 +6,7 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 5 — System Agent normal-app prototype**.
+> ⚠️ Current status: **Phase 7 — App List and Launch MVP**.
 >
 > This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases.
 
@@ -20,7 +20,8 @@ The project has already completed the early prototype foundation:
 - Aelita Shell UI prototype;
 - non-privileged System Agent scaffold connected to Shell UI;
 - `PolicyEngine`, `CapabilityRegistry` and normal-app `DeviceStateReader`;
-- in-memory `ActionLog` for Shell-level events.
+- persistent `ActionLog` for Shell-level events;
+- launchable app listing, local app search, and explicit user-requested launch through normal Android intents.
 
 The current app can represent the future Shell direction, but it remains a normal Android application prototype unless installed or integrated through future system/ROM work. The current System Agent is deterministic, local-only and non-privileged.
 
@@ -84,7 +85,7 @@ It does not yet include:
 - exploit code;
 - cloud services;
 - external AI APIs;
-- real app control;
+- ROM-level app governance and deep app control;
 - background services;
 - Android dangerous permissions;
 - network, cloud or external AI integrations.
@@ -142,7 +143,7 @@ gradle test
 
 No external AI API is used.
 
-## Current status — Phase 6: Local Core MVP inside Shell
+## Previous status — Phase 6: Local Core MVP inside Shell
 
 This branch turns the normal-app System Agent prototype into a local offline core inside Aelita Shell.
 
@@ -154,13 +155,12 @@ Implemented now:
 - deterministic Russian-first command parser;
 - local suggestions generated from memory, projects, and log state;
 - System Agent orchestration over Local Core;
-- Shell UI cards for memory, projects, applications placeholder, system status, journal, and suggestions.
+- Shell UI cards for memory, projects, applications, system status, journal, and suggestions.
 
 Storage is temporary MVP storage based on Android `SharedPreferences` plus built-in `org.json`. The app does not use Room yet and does not contact any network, cloud, or external AI API.
 
 Still not implemented:
 
-- real app launching;
 - Permission Center UI;
 - Room database;
 - background services;
@@ -172,3 +172,15 @@ Still not implemented:
 - local LLM;
 - cloud;
 - external AI API.
+
+
+## Phase 7 — App List and Launch MVP
+
+Implemented in the normal Android Shell frontend:
+
+- launchable app listing through Android launcher intents;
+- local deterministic app search by visible label and package name;
+- user-requested app launch through normal Android intents;
+- every list/search/launch attempt is logged locally.
+
+This is not deep app control yet. Not implemented: ROM-level app governance, force-stop/close apps, permission mediation, usage stats, Notification Listener, Accessibility, Shizuku, root, background automation, local LLM, cloud or external AI.

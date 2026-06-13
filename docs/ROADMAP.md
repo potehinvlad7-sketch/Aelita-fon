@@ -40,7 +40,7 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Shell UI connected to deterministic local agent commands.
 - No hidden services, privileged behavior, cloud or external AI API.
 
-## Phase 6 — Local Core MVP inside Shell — this PR
+## Phase 6 — Local Core MVP inside Shell — done — this PR
 
 - Persistent local memory and projects.
 - Persistent action log.
@@ -138,10 +138,22 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 ## Phase status update
 
 - Phase 5 — System Agent normal-app prototype — done.
-- Phase 6 — Local Core MVP inside Shell — this PR.
-- Phase 7 — App list and launch MVP.
+- Phase 6 — Local Core MVP inside Shell — done.
+- Phase 7 — App list and launch MVP — this PR.
 - Phase 8 — Permission Center prototype.
 - Phase 9 — Action Log and local memory hardening.
 - Phase 10 — System Agent hardening.
 - Phase 11 — Privileged system app design.
 - Phase 12 — ROM tree selection and lisa device research.
+
+
+## Phase updates
+
+- Phase 6 — Local Core MVP inside Shell — done.
+- Phase 7 — App list and launch MVP — this PR.
+- Phase 8 — Permission Center UI.
+- Phase 9 — Action Log and local memory hardening.
+- Phase 10 — Lisa device research pack.
+- Phase 11 — System Agent hardening.
+- Phase 12 — Privileged system app design.
+- Phase 13 — ROM tree selection and build environment.
