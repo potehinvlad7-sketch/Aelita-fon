@@ -7,11 +7,13 @@ import androidx.compose.runtime.Composable
 
 private val AelitaDarkColorScheme: ColorScheme = darkColorScheme(
     primary = AelitaViolet,
+    secondary = MutedViolet,
     background = DeepBlack,
     surface = PanelBlack,
     onPrimary = DeepBlack,
     onBackground = SoftViolet,
     onSurface = SoftViolet,
+    outline = MutedViolet,
 )
 
 @Composable

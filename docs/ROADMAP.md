@@ -34,12 +34,16 @@
 
 ## Phase 3. Shell UI
 
+Статус: **implemented as a first UI prototype**.
+
 Цель: создать Russian-first главный экран Aelita.
 
 - Командная строка.
 - Карточки статуса.
 - Быстрые действия.
 - Состояние offline/local-only.
+- Первый прототип включает домашний Shell screen, командную панель и шесть системных узлов.
+- Карточки системных узлов пока являются placeholders; будущие PR добавят реальные модули и поведение.
 
 ## Phase 4. Room database
 
