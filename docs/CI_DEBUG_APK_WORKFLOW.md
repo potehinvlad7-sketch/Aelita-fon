@@ -43,6 +43,10 @@ Failures during configuration or dependency resolution may indicate a temporary 
 
 This repository intentionally does not commit Gradle wrapper files. The workflow therefore uses `gradle/actions/setup-gradle` to provide Gradle. If the Android Gradle Plugin requires a different Gradle range, update the workflow Gradle version and document the reason in the PR.
 
+### Java/Kotlin target mismatch
+
+If the first failing task is Kotlin compilation and the logs mention inconsistent JVM target compatibility between `compileDebugJavaWithJavac` and `compileDebugKotlin`, keep the Android Java `compileOptions` and Kotlin `jvmTarget` aligned to JDK 17.
+
 ### No Gradle wrapper by policy
 
 Do not fix CI by committing `gradlew`, `gradlew.bat`, or `gradle/wrapper/*`. The project policy avoids committing wrapper binaries. Keep Gradle provisioning inside GitHub Actions unless a separate explicit policy change is approved.
