@@ -14,27 +14,28 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Phase 7 — App list and launch MVP — done.
 - Phase 8 — Permission Center UI — done.
 - Phase 9 — Alpha 0.1 Flash Candidate Pack — done.
+- Phase 10 — Aelita-Fon release APK build path — done.
+- Phase 11 — Build/test APK on Windows — done.
+- Phase 12 — Debug APK CI hardening — done.
 
 ## Current phase
 
-## Phase 10 — Aelita-Fon release APK build path — this PR
+## Phase 13 — lisa debug APK smoke test recorded — this PR
 
-- Document the safe debug and release APK build path.
-- Require local release signing without committed keystores or keys.
-- Require SHA-256 checksum recording for release APK artifacts.
-- Define the HyperOS APK smoke test checklist before ROM inclusion.
-- Draft future ROM preload placement options without claiming ROM buildability.
-- Keep the PR safe: no APKs, no binaries, no keystores, no flashing commands, no dangerous permissions, no `INTERNET` permission, and no ROM buildability claim.
+- Record that the GitHub Actions debug APK artifact path works for a manual normal-app smoke test.
+- Record that the `Aelita-Fon-debug-apk` artifact was downloaded, installed, and opened on the real Xiaomi 11 Lite 5G NE (`lisa`) test phone.
+- Record that the Aelita Shell, status panel, Local Core status, and package name were visible.
+- Keep the result scoped to a basic debug APK smoke test only.
+- Do not claim release signing, ROM inclusion, ROM buildability, or flashability.
 
 ## Next phases
 
-- Phase 11 — Build/test APK on Windows.
-- Phase 12 — Lisa base ROM candidate selection.
-- Phase 13 — Stock restore package verification.
-- Phase 14 — Base ROM smoke flash planning.
-- Phase 15 — Aelita preloaded/system app integration draft.
-- Phase 16 — Alpha 0.1 build candidate review.
-- Phase 17 — Controlled install test.
+- Phase 14 — Lisa base ROM candidate selection.
+- Phase 15 — Stock restore package verification.
+- Phase 16 — Base ROM smoke flash planning.
+- Phase 17 — Aelita preloaded/system app integration draft.
+- Phase 18 — Alpha 0.1 build candidate review.
+- Phase 19 — Controlled install test.
 
 ## Long-term phases
 
