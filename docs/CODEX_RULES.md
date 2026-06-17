@@ -94,3 +94,17 @@ For ROM-related PRs, Codex must list:
 - Release APK signing is a separate future PR.
 - Workflows must not upload keystores, signing keys, signing passwords, or other secrets.
 - Debug APK artifact workflows must remain separate from ROM build, release signing, and flashing work.
+
+## ROM workspace rules
+
+- ROM workspace PRs must not claim buildability unless a real build was produced.
+- Placeholder folders must be labeled as placeholders.
+- Never add device files for another codename.
+- Never add vendor blobs without legal/source review.
+- Never add kernel images directly.
+- Never add recovery images directly.
+- Never add flashing scripts in planning/workspace PRs.
+- Build helper scripts and flashing scripts are separate categories.
+- Flashing commands require explicit user request and completed rollback checklist.
+- ROM workspace PRs must state whether docs/placeholders only were changed.
+- ROM workspace PRs must confirm no APKs, binaries, images, keystores, vendor blobs, kernel images, recovery images, dangerous permissions, ROM buildability claim, or Alpha 0.1 flashability claim were added.
