@@ -1,0 +1,18 @@
+# AelitaOS product template for Xiaomi 11 Lite 5G NE (lisa).
+# TEMPLATE ONLY: not active build configuration and not buildable yet.
+
+PRODUCT_NAME := aelita_lisa
+PRODUCT_DEVICE := lisa
+PRODUCT_BRAND := AelitaOS
+PRODUCT_MODEL := AelitaOS for Xiaomi 11 Lite 5G NE
+PRODUCT_MANUFACTURER := ArtRaccoon
+
+# Future only: inherit the selected, verified lisa device product here after review.
+# $(call inherit-product, device/xiaomi/lisa/device.mk)
+
+# Future only: include Aelita-Fon after package integration, permissions,
+# signing, and placement are reviewed. This is not active yet.
+# PRODUCT_PACKAGES += AelitaFon
+
+# Future only: AelitaOS overlays after resource-overlay scope is reviewed.
+# PRODUCT_PACKAGE_OVERLAYS += vendor/aelita/overlays

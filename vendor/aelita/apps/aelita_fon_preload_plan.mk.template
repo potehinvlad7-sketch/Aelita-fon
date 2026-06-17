@@ -1,0 +1,10 @@
+# Aelita-Fon ROM inclusion plan template.
+# TEMPLATE ONLY: no APK path, no binary, no signing key, no priv-app claim.
+
+# Phase 1: preload Aelita-Fon as a normal app after source integration review.
+# Phase 2: move to system app only after behavior, updates, and rollback are reviewed.
+# Phase 3: priv-app only after explicit permission, SELinux, policy, and rollback review.
+
+# No actual APK path is defined here.
+# No privileged permission XML is defined here.
+# No signing key is defined here.

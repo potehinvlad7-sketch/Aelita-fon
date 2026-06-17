@@ -6,9 +6,9 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 16 — Lisa clean ROM/source candidate research**.
+> ⚠️ Current status: **Phase 17 — AelitaOS ROM build bootstrap**.
 >
-> The ROM workspace exists and the ROM file map exists. The project is now researching real `lisa`-compatible base ROM/source candidates for AelitaOS. No base has been selected yet, no flashable AelitaOS build exists yet, and no flashing is allowed until stock rollback is verified.
+> The ROM workspace exists, the ROM file map exists, and candidate research exists. The repository now contains practical scripts and templates for ROM build preparation. No source tree has been selected yet, no stock rollback package has been verified yet, no flashable AelitaOS build exists yet, and no flashing is allowed until stock rollback is verified.
 
 ## Current completed pieces
 
@@ -146,15 +146,15 @@ gradle test
 
 No external AI API is used.
 
-## Phase 16 — Lisa clean ROM/source candidate research
+## Phase 17 — AelitaOS ROM build bootstrap
 
-Current status: **Phase 16 — Lisa clean ROM/source candidate research**.
+Current status: **Phase 17 — AelitaOS ROM build bootstrap**.
 
-The ROM workspace exists and the ROM file map exists. This phase researches real `lisa`-compatible base ROM/source candidates and records only candidates where Xiaomi 11 Lite 5G NE or codename `lisa` support is explicitly verifiable.
+The ROM workspace exists, the ROM file map exists, and candidate research exists. This phase adds practical build-preparation scripts and non-buildable source-tree templates for future AelitaOS work.
 
-No flashable AelitaOS ROM exists yet. No base ROM/source tree has been selected yet. The ROM workspace is not buildable, does not include a full Android source tree, does not include proprietary blobs, and does not include APK, ZIP, IMG, kernel, recovery, firmware, signing-key, or keystore artifacts. No flashing is allowed until stock rollback is verified.
+No flashable AelitaOS ROM exists yet. No source tree has been selected yet. No stock rollback package has been verified yet. The ROM workspace is not buildable, does not include a full Android source tree, does not include proprietary blobs, and does not include APK, ZIP, IMG, kernel, recovery, firmware, signing-key, or keystore artifacts. No flashing is allowed until stock rollback is verified.
 
-Next step: verify the stock restore package and rollback path before any flash test.
+Next step: run the host check on Windows WSL2/Linux, create the external ROM workspace, verify stock rollback, and only then select source trees for future external `repo init`/`repo sync`.
 
 ## Phase 12 — Debug APK CI hardening
 
