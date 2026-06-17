@@ -10,19 +10,25 @@ Status: done.
 
 Understand the main Android ROM folders, image types, dynamic partitions, SELinux policy, overlays, manifests and future lunch target naming before selecting a base.
 
-Status: this PR.
+Status: done.
 
 ## Step 1b — Select clean base candidate
 
 Select the verified clean base ROM/source direction for Xiaomi 11 Lite 5G NE (`lisa`).
 
-Status: next.
+Status: not selected yet.
+
+## Step 1c — Research real lisa base candidates
+
+Research real ROM and source candidates that explicitly support Xiaomi 11 Lite 5G NE (`lisa`).
+
+Status: this PR.
 
 ## Step 2 — Verify stock restore package and rollback path
 
 Verify the stock restore package, compatibility, checksum, tools, and rollback procedure before any flash testing.
 
-Status: pending.
+Status: next, mandatory before any flash.
 
 ## Step 3 — Prepare build host
 
