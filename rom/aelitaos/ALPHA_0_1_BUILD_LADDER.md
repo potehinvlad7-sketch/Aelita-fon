@@ -24,15 +24,29 @@ Research real ROM and source candidates that explicitly support Xiaomi 11 Lite 5
 
 Status: this PR.
 
+## Step 1d — Bootstrap build host and ROM scaffold
+
+Add safe host-check tooling, external workspace creation, local manifest templates, product templates, and Aelita-Fon preload planning templates.
+
+Status: this PR.
+
+Next real steps:
+
+- run host check on Windows WSL2/Linux;
+- create external ROM workspace;
+- verify stock rollback package;
+- select source trees;
+- only then run repo init/sync in external workspace.
+
 ## Step 2 — Verify stock restore package and rollback path
 
 Verify the stock restore package, compatibility, checksum, tools, and rollback procedure before any flash testing.
 
 Status: next, mandatory before any flash.
 
-## Step 3 — Prepare build host
+## Step 3 — Run build host check
 
-Prepare the build host and document the exact environment.
+Run the bootstrap host check script on Windows WSL2/Linux and document the exact environment before source sync.
 
 Status: pending.
 

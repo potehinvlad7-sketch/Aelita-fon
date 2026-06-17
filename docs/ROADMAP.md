@@ -20,26 +20,27 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Phase 13 — Debug APK CI hardening — done.
 - Phase 14 — AelitaOS ROM workspace initialized — done.
 - Phase 15 — ROM file map and clean base strategy — done.
+- Phase 16 — Lisa clean ROM/source candidate research — done.
 
 ## Current phase
 
-## Phase 16 — Lisa clean ROM/source candidate research — this PR
+## Phase 17 — AelitaOS ROM build bootstrap — this PR
 
-- Research real base ROM/source candidates with explicit Xiaomi 11 Lite 5G NE / `lisa` support.
-- Record official and source-tree candidates without downloading packages or adding binaries.
-- Create a shortlist that keeps source-build, reference-ROM and GSI paths separate.
+- Add safe host-check and external workspace-creation scripts.
+- Add non-buildable local manifest and product makefile templates for future `lisa` source-tree work.
+- Add Aelita-Fon preload planning template without APKs, binaries, signing keys, privileged permissions, or flash commands.
 - Keep the PR safe: no APKs, no ZIPs, no IMGs, no binaries, no vendor blobs, no kernel/recovery images, no signing keys, no flashing scripts, no flashing commands, no dangerous permissions, no ROM buildability claim, and no Alpha 0.1 flashability claim.
 
 ## Next phases
 
-- Phase 17 — Stock restore package verification.
-- Phase 18 — Build host setup.
-- Phase 19 — Lisa device tree/vendor/kernel source review.
-- Phase 20 — Base ROM build attempt.
-- Phase 21 — Base ROM smoke flash review.
-- Phase 22 — Aelita-Fon system app integration.
-- Phase 23 — AelitaOS Alpha 0.1 build candidate.
-- Phase 24 — Controlled install test.
+- Phase 18 — Run host check on WSL2/Linux.
+- Phase 19 — Stock restore package verification.
+- Phase 20 — Source tree selection.
+- Phase 21 — repo init/sync in external workspace.
+- Phase 22 — Base ROM build attempt.
+- Phase 23 — Aelita-Fon ROM inclusion.
+- Phase 24 — AelitaOS Alpha 0.1 build candidate.
+- Phase 25 — Controlled install test.
 
 ## Long-term phases
 

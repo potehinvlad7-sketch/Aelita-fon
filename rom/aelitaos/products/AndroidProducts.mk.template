@@ -1,0 +1,8 @@
+# AelitaOS AndroidProducts template for lisa.
+# TEMPLATE ONLY: not active build configuration and not a buildability claim.
+
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/aelita_lisa.mk
+
+COMMON_LUNCH_CHOICES := \
+    aelita_lisa-userdebug

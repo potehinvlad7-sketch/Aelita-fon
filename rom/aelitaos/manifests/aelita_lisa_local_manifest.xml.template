@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AelitaOS lisa local manifest TEMPLATE ONLY.
+
+  This file is not active build configuration and is not buildable yet.
+  Verify every source before use.
+  Do not use device trees, vendor trees, kernels, or blobs for another codename.
+  Target device: Xiaomi 11 Lite 5G NE, codename lisa.
+-->
+<manifest>
+  <!-- TBD: verified lisa device tree. Do not substitute another codename. -->
+  <project
+      name="REPLACE_WITH_VERIFIED_DEVICE_TREE_URL"
+      path="device/xiaomi/lisa"
+      remote="github"
+      revision="REPLACE_WITH_REVIEWED_BRANCH" />
+
+  <!-- TBD: verified lisa vendor tree or reviewed blob extraction strategy. -->
+  <project
+      name="REPLACE_WITH_VERIFIED_VENDOR_TREE_URL"
+      path="vendor/xiaomi/lisa"
+      remote="github"
+      revision="REPLACE_WITH_REVIEWED_BRANCH" />
+
+  <!--
+    TBD: verified kernel tree. Future strategy may be kernel/xiaomi/lisa or
+    kernel/xiaomi/sm7325 depending on the selected, reviewed ROM base.
+  -->
+  <project
+      name="REPLACE_WITH_VERIFIED_KERNEL_TREE_URL"
+      path="kernel/xiaomi/sm7325"
+      remote="github"
+      revision="REPLACE_WITH_REVIEWED_BRANCH" />
+
+  <!-- TBD: AelitaOS layer path after source-tree integration is reviewed. -->
+  <project
+      name="REPLACE_WITH_VERIFIED_AELITA_LAYER_URL"
+      path="vendor/aelita"
+      remote="github"
+      revision="REPLACE_WITH_REVIEWED_BRANCH" />
+
+  <!-- Alternative future app path if Aelita-Fon is integrated as source. -->
+  <!-- <project name="REPLACE_WITH_VERIFIED_AELITA_FON_URL" path="packages/apps/AelitaFon" remote="github" revision="REPLACE_WITH_REVIEWED_BRANCH" /> -->
+</manifest>
