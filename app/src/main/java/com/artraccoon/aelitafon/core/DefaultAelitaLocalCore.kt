@@ -27,6 +27,7 @@ class DefaultAelitaLocalCore(
         LocalCommand.ShowSuggestions -> showSuggestions()
         LocalCommand.ShowStatus -> safeMessage(getSummary().userMessage, "local_status", "status")
         LocalCommand.ShowCapabilities -> safeMessage(capabilitiesText(), "local_capabilities", "capabilities")
+        LocalCommand.ShowPermissionCenter -> safeMessage(permissionCenterText(), "local_permission_center", "permissions")
         LocalCommand.ListApps -> safeMessage("Приложения доступны через System Agent: обычный Android-запуск, не ROM-контроль.", "LIST_APPS", "apps")
         is LocalCommand.SearchApp -> safeMessage("Поиск приложений выполняет System Agent: ${command.query}", "SEARCH_APPS", "apps")
         is LocalCommand.LaunchApp -> safeMessage("Запуск приложений выполняет System Agent только по явной команде: ${command.query}", "LAUNCH_APP", "apps")
@@ -87,6 +88,8 @@ class DefaultAelitaLocalCore(
     }
 
     private fun capabilitiesText() = "Я умею локально: запоминать факты, вести проекты, показывать журнал, предложения и статус. Я запускаю приложения только по явной команде через обычные Android Intent; не имею root/Accessibility/Notification Listener, не использую сеть, облако или внешние AI API."
+
+    private fun permissionCenterText() = "Permission Center доступен через System Agent. Локальное ядро фиксирует запрос, но не выдаёт себе новых прав и не включает привилегированные возможности."
 
     private fun helpText() = "Команды: запомни <текст>, память, добавь проект <название>, проекты, журнал, предложения, статус, возможности, приложения, найди приложение <название>, открой <название>, прошивка. Очистка памяти и проектов появится позже только с подтверждением."
 }

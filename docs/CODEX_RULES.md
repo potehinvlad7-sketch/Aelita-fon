@@ -10,6 +10,14 @@
 - Run checks before finishing when checks exist.
 - Если checks нельзя запустить, явно указать причину.
 
+## Debug APK CI repair rules
+
+- Debug APK CI repair PRs may change workflow YAML and docs only unless explicitly requested.
+- CI workflow must install the app `compileSdk` platform explicitly.
+- CI build commands must use `--stacktrace`.
+- CI may upload APK artifacts only through GitHub Actions, never commit them.
+- CI failures must be diagnosed from logs before moving to ROM steps.
+
 ## Architecture restrictions
 
 - Do not add external AI APIs.

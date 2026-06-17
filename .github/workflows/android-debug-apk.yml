@@ -32,8 +32,37 @@ jobs:
         with:
           gradle-version: '8.14.4'
 
+      - name: Repository diagnostics
+        run: |
+          echo "Java version:"
+          java -version
+          echo "Gradle version:"
+          gradle --version
+          echo "Android SDK root: ${ANDROID_SDK_ROOT:-<unset>}"
+          echo "Repository root files:"
+          find . -maxdepth 1 -mindepth 1 -print | sort
+          echo "App directory files:"
+          find app -maxdepth 2 -mindepth 1 -print | sort
+
+      - name: Install Android SDK components
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager \
+            "platform-tools" \
+            "platforms;android-36" \
+            "build-tools;36.0.0"
+
+      - name: Gradle dependency diagnostics
+        run: |
+          gradle projects --stacktrace
+          gradle :app:dependencies --configuration debugRuntimeClasspath --stacktrace
+
       - name: Build debug APK
-        run: gradle :app:assembleDebug
+        run: gradle :app:assembleDebug --stacktrace --info
+
+      - name: Discover APK outputs
+        if: always()
+        run: find app/build/outputs -type f || true
 
       - name: Upload debug APK artifact
         uses: actions/upload-artifact@v4
