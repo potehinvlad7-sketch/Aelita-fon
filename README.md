@@ -6,9 +6,9 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 12 — Debug APK CI hardening**.
+> ⚠️ Current status: **Phase 13 — lisa debug APK smoke test recorded**.
 >
-> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon has a GitHub Actions debug APK artifact workflow for local smoke testing only. Its first run failed at the Gradle build step, so the current phase hardens CI with explicit Android SDK installation and diagnostic logs; release APK signing remains future work.
+> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. The GitHub Actions debug APK artifact path works for local smoke testing: Aelita-Fon was downloaded from the `Aelita-Fon-debug-apk` artifact, installed, and opened on a real Xiaomi 11 Lite 5G NE (`lisa`) test device. The basic debug APK smoke test passed, but the ROM remains not flashable yet; the next step is Lisa base ROM candidate selection.
 
 ## Current completed pieces
 
@@ -142,6 +142,20 @@ gradle test
 ```
 
 No external AI API is used.
+
+## Phase 13 — lisa debug APK smoke test recorded
+
+Current status: **Phase 13 — lisa debug APK smoke test recorded**.
+
+The debug APK artifact path works for normal Android app smoke testing. After PR #13 was merged, the GitHub Actions artifact `Aelita-Fon-debug-apk` was downloaded, installed, and manually tested on the real Xiaomi 11 Lite 5G NE (`lisa`) test phone. Aelita-Fon opened, Aelita Shell loaded, status information appeared, Local Core status appeared, and the package name was visible as `com.artraccoon.aelitafon`. The user reported the basic smoke test as OK.
+
+This remains a normal debug APK validation only:
+
+- the APK is not release signed;
+- the APK is not a ROM candidate;
+- the APK is not flashable;
+- Alpha 0.1 remains not flashable from this repository;
+- the next step is Lisa base ROM candidate selection.
 
 ## Phase 12 — Debug APK CI hardening
 

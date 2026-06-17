@@ -53,3 +53,30 @@ Rules for this source:
 - do not treat the debug APK as a ROM candidate;
 - do not include the debug APK in the Alpha 0.1 ROM image;
 - record the source commit and SHA-256 checksum before testing.
+
+## Recorded smoke test result
+
+After the debug APK CI workflow was fixed and merged, the user manually downloaded the GitHub Actions artifact `Aelita-Fon-debug-apk`, installed it on the real Xiaomi 11 Lite 5G NE (`lisa`) test phone, and performed a basic manual smoke test.
+
+Recorded result: basic APK smoke test OK.
+
+Observed scope:
+
+- the APK installed as a normal Android app;
+- Aelita-Fon opened on `lisa`;
+- Aelita Shell was visible;
+- status information was visible;
+- Local Core status was visible;
+- the package was shown as `com.artraccoon.aelitafon`.
+
+Boundaries:
+
+- not a release APK;
+- not a ROM candidate;
+- not flashable.
+
+Next required confirmations:
+
+- HOME launcher selection;
+- reboot persistence;
+- commands: `status`, `memory`, `projects`, `journal`, `apps`, `rights`.
