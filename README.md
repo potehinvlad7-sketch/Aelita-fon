@@ -6,9 +6,9 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 12 — Debug APK CI hardening**.
+> ⚠️ Current status: **Phase 14 — AelitaOS ROM workspace initialized**.
 >
-> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon has a GitHub Actions debug APK artifact workflow for local smoke testing only. Its first run failed at the Gradle build step, so the current phase hardens CI with explicit Android SDK installation and diagnostic logs; release APK signing remains future work.
+> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon debug APK has run on the real Xiaomi 11 Lite 5G NE (`lisa`) test device, and the project is now moving into actual AelitaOS ROM workspace setup. No flashable ROM exists yet; the next step is to select a verified `lisa` ROM base/source.
 
 ## Current completed pieces
 
@@ -118,6 +118,8 @@ The Shell prototype may be selected as a HOME launcher, but launcher mode only r
 - [`docs/ROADMAP.md`](docs/ROADMAP.md) — ROM-first phase plan.
 - [`docs/SPEC.md`](docs/SPEC.md) — technical specification.
 - [`rom/README.md`](rom/README.md) — placeholder for future ROM integration material.
+- [`rom/aelitaos/README.md`](rom/aelitaos/README.md) — future AelitaOS ROM workspace status and gated phase overview.
+- [`rom/lisa/README.md`](rom/lisa/README.md) — current `lisa` device workspace and safety boundaries.
 
 ## Launcher mode safety note
 
@@ -142,6 +144,16 @@ gradle test
 ```
 
 No external AI API is used.
+
+## Phase 14 — AelitaOS ROM workspace initialized
+
+Current status: **Phase 14 — AelitaOS ROM workspace initialized**.
+
+Aelita-Fon debug APK has run on the real Xiaomi 11 Lite 5G NE (`lisa`) test device. The project is now moving from normal-app prototype work into actual AelitaOS ROM workspace setup. This repository now contains documentation-only ROM workspace folders for AelitaOS, `lisa`, future product definitions, overlays, SELinux policy, vendor namespace, rollback planning, and first ROM test scope.
+
+No flashable AelitaOS ROM exists yet. The ROM workspace is not buildable, does not include a full Android source tree, does not include proprietary blobs, and does not include APK, ZIP, IMG, kernel, recovery, firmware, signing-key, or keystore artifacts.
+
+Next step: select a verified `lisa` ROM base/source candidate before build host setup or any flash planning.
 
 ## Phase 12 — Debug APK CI hardening
 
