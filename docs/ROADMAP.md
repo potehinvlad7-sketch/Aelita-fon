@@ -19,19 +19,19 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Phase 12 — Debug APK smoke test on real `lisa` — done in practice.
 - Phase 13 — Debug APK CI hardening — done.
 - Phase 14 — AelitaOS ROM workspace initialized — done.
+- Phase 15 — ROM file map and clean base strategy — done.
 
 ## Current phase
 
-## Phase 15 — ROM file map and clean base strategy — this PR
+## Phase 16 — Lisa clean ROM/source candidate research — this PR
 
-- Explain Android ROM/source tree folders and image types in plain Russian.
-- Define the clean base strategy for gradually turning a simple `lisa`-compatible base into AelitaOS.
-- Create a strict candidate checklist and empty candidate table.
+- Research real base ROM/source candidates with explicit Xiaomi 11 Lite 5G NE / `lisa` support.
+- Record official and source-tree candidates without downloading packages or adding binaries.
+- Create a shortlist that keeps source-build, reference-ROM and GSI paths separate.
 - Keep the PR safe: no APKs, no ZIPs, no IMGs, no binaries, no vendor blobs, no kernel/recovery images, no signing keys, no flashing scripts, no flashing commands, no dangerous permissions, no ROM buildability claim, and no Alpha 0.1 flashability claim.
 
 ## Next phases
 
-- Phase 16 — Lisa base ROM/source candidate selection.
 - Phase 17 — Stock restore package verification.
 - Phase 18 — Build host setup.
 - Phase 19 — Lisa device tree/vendor/kernel source review.
