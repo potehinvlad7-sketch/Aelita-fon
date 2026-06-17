@@ -6,9 +6,9 @@
 
 Aelita is **not** a chatbot app. Aelita is intended to become the primary local system interface for the user's own phone: visible, auditable, local-first and controlled by the user.
 
-> ⚠️ Current status: **Phase 14 — AelitaOS ROM workspace initialized**.
+> ⚠️ Current status: **Phase 15 — ROM file map and clean base strategy**.
 >
-> This repository does **not** yet build a flashable ROM. The current Android app does **not** yet have system privileges, cannot truly control all applications, and cannot replace Android framework behavior. True control requires ROM/system integration in later phases. Aelita-Fon debug APK has run on the real Xiaomi 11 Lite 5G NE (`lisa`) test device, and the project is now moving into actual AelitaOS ROM workspace setup. No flashable ROM exists yet; the next step is to select a verified `lisa` ROM base/source.
+> The ROM workspace exists. This phase explains Android firmware/source structure and defines the strategy for choosing a simple clean `lisa`-compatible base and gradually adapting it into AelitaOS. This repository does **not** yet build a flashable ROM, no base ROM has been selected yet, and Aelita-Fon remains the future Shell/system component inside the firmware rather than the whole ROM.
 
 ## Current completed pieces
 
@@ -114,6 +114,7 @@ The Shell prototype may be selected as a HOME launcher, but launcher mode only r
 - [`docs/GOOGLE_REPLACEMENT_MODEL.md`](docs/GOOGLE_REPLACEMENT_MODEL.md) — local-first replacement model for Google-centered behavior.
 - [`docs/SYSTEM_AGENT_PLAN.md`](docs/SYSTEM_AGENT_PLAN.md) — future Aelita System Agent responsibilities.
 - [`docs/ROM_BUILD_PIPELINE.md`](docs/ROM_BUILD_PIPELINE.md) — high-level future ROM build pipeline.
+- [`docs/ANDROID_ROM_FILE_MAP.md`](docs/ANDROID_ROM_FILE_MAP.md) — simple Russian map of Android ROM folders, images, partitions and build concepts.
 - [`docs/SECURITY_AND_ROLLBACK.md`](docs/SECURITY_AND_ROLLBACK.md) — safety and rollback model.
 - [`docs/ROADMAP.md`](docs/ROADMAP.md) — ROM-first phase plan.
 - [`docs/SPEC.md`](docs/SPEC.md) — technical specification.
@@ -145,15 +146,15 @@ gradle test
 
 No external AI API is used.
 
-## Phase 14 — AelitaOS ROM workspace initialized
+## Phase 15 — ROM file map and clean base strategy
 
-Current status: **Phase 14 — AelitaOS ROM workspace initialized**.
+Current status: **Phase 15 — ROM file map and clean base strategy**.
 
-Aelita-Fon debug APK has run on the real Xiaomi 11 Lite 5G NE (`lisa`) test device. The project is now moving from normal-app prototype work into actual AelitaOS ROM workspace setup. This repository now contains documentation-only ROM workspace folders for AelitaOS, `lisa`, future product definitions, overlays, SELinux policy, vendor namespace, rollback planning, and first ROM test scope.
+The ROM workspace exists from the previous phase. This phase explains the firmware/source tree structure and documents how AelitaOS should choose a simple clean `lisa`-compatible base before adapting it into the final AelitaOS firmware.
 
-No flashable AelitaOS ROM exists yet. The ROM workspace is not buildable, does not include a full Android source tree, does not include proprietary blobs, and does not include APK, ZIP, IMG, kernel, recovery, firmware, signing-key, or keystore artifacts.
+No flashable AelitaOS ROM exists yet. No base ROM/source tree has been selected yet. The ROM workspace is not buildable, does not include a full Android source tree, does not include proprietary blobs, and does not include APK, ZIP, IMG, kernel, recovery, firmware, signing-key, or keystore artifacts.
 
-Next step: select a verified `lisa` ROM base/source candidate before build host setup or any flash planning.
+Next step: fill the `lisa` base candidate checklist/table only after source, codename, firmware, recovery, bugs and rollback information are verified.
 
 ## Phase 12 — Debug APK CI hardening
 
