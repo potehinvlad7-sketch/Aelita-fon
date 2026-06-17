@@ -6,9 +6,15 @@ Aelita-Fon runs as a normal app on stock HyperOS.
 
 Status: done.
 
-## Step 1 — Select base ROM/source for lisa
+## Step 1a — Understand Android ROM file map
 
-Select the verified base ROM/source direction for Xiaomi 11 Lite 5G NE (`lisa`).
+Understand the main Android ROM folders, image types, dynamic partitions, SELinux policy, overlays, manifests and future lunch target naming before selecting a base.
+
+Status: this PR.
+
+## Step 1b — Select clean base candidate
+
+Select the verified clean base ROM/source direction for Xiaomi 11 Lite 5G NE (`lisa`).
 
 Status: next.
 

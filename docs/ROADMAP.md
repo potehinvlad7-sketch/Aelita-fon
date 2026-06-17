@@ -18,28 +18,28 @@ This roadmap pivots the project from an Android launcher prototype into the arch
 - Phase 11 — Build/test APK on Windows — done in practice.
 - Phase 12 — Debug APK smoke test on real `lisa` — done in practice.
 - Phase 13 — Debug APK CI hardening — done.
+- Phase 14 — AelitaOS ROM workspace initialized — done.
 
 ## Current phase
 
-## Phase 14 — AelitaOS ROM workspace initialized — this PR
+## Phase 15 — ROM file map and clean base strategy — this PR
 
-- Create documentation-only AelitaOS ROM workspace folders.
-- Create `lisa`-only device workspace placeholders.
-- Define Alpha 0.1 build ladder without claiming buildability.
-- Define rollback and first ROM test scope before any flash attempt.
-- Keep the PR safe: no APKs, no ZIPs, no IMGs, no binaries, no vendor blobs, no kernel/recovery images, no signing keys, no flashing scripts, no flashing commands, no dangerous permissions, and no Alpha 0.1 flashability claim.
+- Explain Android ROM/source tree folders and image types in plain Russian.
+- Define the clean base strategy for gradually turning a simple `lisa`-compatible base into AelitaOS.
+- Create a strict candidate checklist and empty candidate table.
+- Keep the PR safe: no APKs, no ZIPs, no IMGs, no binaries, no vendor blobs, no kernel/recovery images, no signing keys, no flashing scripts, no flashing commands, no dangerous permissions, no ROM buildability claim, and no Alpha 0.1 flashability claim.
 
 ## Next phases
 
-- Phase 15 — Lisa base ROM/source candidate selection.
-- Phase 16 — Stock restore package verification.
-- Phase 17 — Build host setup.
-- Phase 18 — Lisa device tree/vendor/kernel source review.
-- Phase 19 — Base ROM build attempt.
-- Phase 20 — Base ROM smoke flash review.
-- Phase 21 — Aelita-Fon system app integration.
-- Phase 22 — AelitaOS Alpha 0.1 build candidate.
-- Phase 23 — Controlled install test.
+- Phase 16 — Lisa base ROM/source candidate selection.
+- Phase 17 — Stock restore package verification.
+- Phase 18 — Build host setup.
+- Phase 19 — Lisa device tree/vendor/kernel source review.
+- Phase 20 — Base ROM build attempt.
+- Phase 21 — Base ROM smoke flash review.
+- Phase 22 — Aelita-Fon system app integration.
+- Phase 23 — AelitaOS Alpha 0.1 build candidate.
+- Phase 24 — Controlled install test.
 
 ## Long-term phases
 
